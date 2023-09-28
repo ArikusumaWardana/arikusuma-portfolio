@@ -440,6 +440,12 @@ section.hero .photo-left img{
         }
     }
 
+    @media(max-width: 415px) {
+        section.hero {
+            padding-top: 10rem;
+        }
+    }
+
 /* End Hero Section */
 
 
@@ -591,7 +597,7 @@ section.project {
     @media(max-width: 415px) {
         .card {
             width: 20rem;
-            height: 23rem;
+            height: 25rem;
         }
 
         .card-body h1 {
