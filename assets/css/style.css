@@ -429,6 +429,10 @@ section.hero .photo-left img{
     }
     
     @media(max-width: 576px) {
+        section.hero {
+            padding-top: 5rem;
+        }
+
         section.hero .photo-left img {
             width: 250px;
             height: 200px;
@@ -582,6 +586,31 @@ section.project {
     color: #fff;
     background-color: rgb(100 116 139);
 }
+
+    /* Responsive */
+    @media(max-width: 415px) {
+        .card {
+            width: 20rem;
+            height: 23rem;
+        }
+
+        .card-body h1 {
+            font-size: 18px !important;
+        }
+
+        .lang {
+            gap: 0.5rem;
+        }
+
+        .lang div span {
+            font-size: 12px !important;
+        }
+        
+        .card .card-body .src-proj {
+            margin-top: 0;
+            height: 2.8rem;
+        }
+    }
 
 
 /* End Project Section */
