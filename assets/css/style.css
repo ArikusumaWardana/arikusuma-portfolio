@@ -440,7 +440,7 @@ section.hero .photo-left img{
         }
     }
 
-    @media(max-width: 415px) {
+    @media(max-width: 457px) {
         section.hero {
             padding-top: 10rem;
         }
