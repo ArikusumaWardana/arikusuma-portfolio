@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#56ccf2"/>
+      <stop offset="100%" style="stop-color:#2f80ed"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#bg)"/>
+  <circle cx="200" cy="75" r="40" fill="white" opacity="0.15"/>
+  <circle cx="200" cy="75" r="30" fill="white" opacity="0.1"/>
+  <path d="M200 50 L195 65 L180 65 L192 76 L187 92 L200 82 L213 92 L208 76 L220 65 L205 65 Z" fill="white" opacity="0.5"/>
+  <rect x="100" y="125" width="200" height="15" rx="7" fill="white" opacity="0.3"/>
+  <rect x="140" y="150" width="50" height="8" rx="4" fill="white" opacity="0.2"/>
+  <rect x="210" y="150" width="50" height="8" rx="4" fill="white" opacity="0.2"/>
+  <text x="200" y="180" font-family="Arial" font-size="10" fill="white" opacity="0.6" text-anchor="middle">Weather App</text>
+</svg>

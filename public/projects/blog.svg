@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#bg)"/>
+  <rect x="30" y="40" width="340" height="120" rx="8" fill="white" opacity="0.15"/>
+  <rect x="50" y="60" width="200" height="20" rx="4" fill="white" opacity="0.4"/>
+  <rect x="50" y="90" width="300" height="8" rx="4" fill="white" opacity="0.25"/>
+  <rect x="50" y="105" width="280" height="8" rx="4" fill="white" opacity="0.25"/>
+  <rect x="50" y="120" width="250" height="8" rx="4" fill="white" opacity="0.25"/>
+  <rect x="50" y="140" width="60" height="10" rx="5" fill="white" opacity="0.3"/>
+  <text x="200" y="180" font-family="Arial" font-size="10" fill="white" opacity="0.6" text-anchor="middle">Blog Platform</text>
+</svg>
