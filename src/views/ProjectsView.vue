@@ -103,6 +103,12 @@ const projects = [
     image: '/projects/game.svg',
     techStack: ['Python', 'IPYNB', 'NLP'],
     githubUrl: 'https://github.com/ArikusumaWardana/Sentiment-Analysis-MLBB'
+  },
+  {
+    name: 'Animatronics Afterhouse',
+    description: 'A horror game project inspired by Five Nights at Freddy\'s 2, featuring immersive gameplay using real-life photo and video assets.',
+    image: '/projects/animatronics afterhouse.png',
+    techStack: ['Unity', 'C#', 'Plastic CSM'],
   }
 ]
 
