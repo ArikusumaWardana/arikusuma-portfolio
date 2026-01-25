@@ -109,6 +109,21 @@ const projects = [
     description: 'A horror game project inspired by Five Nights at Freddy\'s 2, featuring immersive gameplay using real-life photo and video assets.',
     image: '/projects/animatronics afterhouse.png',
     techStack: ['Unity', 'C#', 'Plastic CSM'],
+  },
+  {
+    name: "Face Emotion Recognition Densenet",
+    description: "An end-to-end Face Emotion Recognition (FER) system built with TensorFlow and Transfer Learning (DenseNet121), includes deployment-ready models in SavedModel, TF-Lite (Android), and TFJS (Web) formats.",
+    image:'/projects/game.svg',
+    techStack: ['Python', 'DenseNet121', 'TensorFlow', 'IPYNB'],
+    githubUrl: 'https://github.com/ArikusumaWardana/face-emotion-recognition-densenet'
+  },
+  {
+    name: 'Vital Fizz Landing Page',
+    description: "VITAL FIZZ is a landing page website introducing carbonated herbal drinks that combine Indonesian spices with today's lifestyle.",
+    techStack: ['Vue JS', 'Tailwind CSS'],
+    image: '/projects/vitalfizz.png',
+    websiteUrl: 'https://vitalfizz.vercel.app/',
+    githubUrl: 'https://github.com/ArikusumaWardana/Vital-Fizz'
   }
 ]
 
