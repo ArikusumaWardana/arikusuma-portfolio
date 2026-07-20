@@ -48,17 +48,6 @@ const hoveredIndex = ref(null)
 // Experiences sorted from newest to oldest (top to bottom)
 const experiences = [
   {
-    title: 'Junior Game Programmer',
-    organization: 'Socks.Studio',
-    startDate: 'Dec 2025',
-    endDate: 'Mei 2026',
-    description: [
-      'Developing gameplay mechanics and features using Unity',
-      'Collaborating with designers and artists to implement game systems',
-      'Optimizing game performance and fixing bugs'
-    ]
-  },
-  {
     title: 'Game Programmer',
     organization: 'Palm Game Studio',
     startDate: 'Aug 2025',
@@ -67,6 +56,17 @@ const experiences = [
       'Building and maintaining game systems in Unity with C#',
       'Implementing player controls, AI behaviors, and game logic',
       'Version control management using Plastic SCM'
+    ]
+  },
+  {
+    title: 'Junior Game Programmer',
+    organization: 'Socks.Studio',
+    startDate: 'Dec 2025',
+    endDate: 'Mei 2026',
+    description: [
+      'Developing gameplay mechanics and features using Unity',
+      'Collaborating with designers and artists to implement game systems',
+      'Optimizing game performance and fixing bugs'
     ]
   },
   {
