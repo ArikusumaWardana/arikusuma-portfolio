@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { BriefcaseBusiness, FolderKanban, Home, Moon, Sun, User, Wrench, Zap } from 'lucide-vue-next'
+import { BriefcaseBusiness, FolderKanban, HeartHandshake, Home, Moon, Sun, User, Wrench, Zap } from 'lucide-vue-next'
 import { onMounted, ref } from 'vue'
 
 const isMenuOpen = ref(false)
@@ -47,7 +47,8 @@ const navLinks = [
   { name: 'Skill', path: '/skill', icon: Zap },
   { name: 'Tools', path: '/tools', icon: Wrench },
   { name: 'Projects', path: '/projects', icon: FolderKanban },
-  { name: 'Experiences', path: '/experiences', icon: BriefcaseBusiness }
+  { name: 'Experiences', path: '/experiences', icon: BriefcaseBusiness },
+  { name: 'Volunteers', path: '/volunteers', icon: HeartHandshake }
 ]
 
 function toggleMenu() {

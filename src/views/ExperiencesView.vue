@@ -51,7 +51,7 @@ const experiences = [
     title: 'Junior Game Programmer',
     organization: 'Socks.Studio',
     startDate: 'Dec 2025',
-    endDate: 'Present',
+    endDate: 'Mei 2026',
     description: [
       'Developing gameplay mechanics and features using Unity',
       'Collaborating with designers and artists to implement game systems',
