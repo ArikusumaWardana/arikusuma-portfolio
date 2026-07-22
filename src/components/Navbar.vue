@@ -3,7 +3,7 @@
     <div class="navbar-container">
       <router-link to="/" class="navbar-brand">
         <img src="/logo.svg" alt="Arikusuma Wardana Logo" class="brand-logo" />
-        <span class="brand-text">Portfolio</span>
+        <span class="brand-text">Arikusuma</span>
       </router-link>
 
       <button class="hamburger" :class="{ active: isMenuOpen }" @click="toggleMenu">

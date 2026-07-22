@@ -21,7 +21,7 @@ import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 
 useHead({
-  titleTemplate: (title) => title ? `${title} — Arikusuma Wardana` : 'Arikusuma Wardana — Web Developer & Game Developer Portfolio',
+  titleTemplate: (title) => title ? `${title} | Arikusuma Wardana` : 'Arikusuma Wardana | Web Developer & Game Developer Portfolio',
   meta: [
     {
       name: 'description',

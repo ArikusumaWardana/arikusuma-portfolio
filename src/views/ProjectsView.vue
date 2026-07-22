@@ -133,6 +133,13 @@ const projects = [
     image: '/projects/apsara-essence.webp',
     websiteUrl: 'https://apsara-essence.vercel.app/',
     githubUrl: 'https://github.com/ArikusumaWardana/Apsara-Essence'
+  },
+  {
+    name: 'EcoChain Website',
+    description: "EcoChain is a transparent green supply chain platform connecting eco-conscious producers, consumers, and independent verifiers. Consumers can browse certified sustainable products while tracing each item's origin, carbon footprint, and verification status. Producers can register products to reach a wider eco-conscious market.",
+    techStack: ['HTML', 'CSS', 'Javascript'],
+    image: '/projects/ecochain.webp',
+    githubUrl: 'https://github.com/ArikusumaWardana/EcoChain-website'
   }
 ]
 
