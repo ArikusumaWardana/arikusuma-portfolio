@@ -2,7 +2,7 @@
   <nav class="navbar glass">
     <div class="navbar-container">
       <router-link to="/" class="navbar-brand">
-        <img src="/logo.svg" alt="AW Logo" class="brand-logo" />
+        <img src="/logo.svg" alt="Arikusuma Wardana Logo" class="brand-logo" />
         <span class="brand-text">Portfolio</span>
       </router-link>
 

@@ -3,7 +3,7 @@
     <div class="footer-container">
       <div class="footer-content">
         <div class="footer-brand">
-          <img src="/logo.svg" alt="AW Logo" class="brand-logo" />
+          <img src="/logo.svg" alt="Arikusuma Wardana Logo" loading="lazy" class="brand-logo" />
           <span>Portfolio</span>
         </div>
         <p class="footer-tagline">Crafting digital experiences with passion and precision.</p>

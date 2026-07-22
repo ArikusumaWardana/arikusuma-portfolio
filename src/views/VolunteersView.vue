@@ -2,7 +2,7 @@
   <div class="page volunteers-page">
     <div class="volunteers-content animate-fadeIn">
       <div class="page-title">
-        <h1><span class="gradient-text">Volunteer Activities</span></h1>
+        <h2><span class="gradient-text">Volunteer Activities</span></h2>
         <p>Giving back to the community and participating in social and tech initiatives</p>
       </div>
 
@@ -14,7 +14,7 @@
           :class="`delay-${(index + 1) * 100}`"
         >
           <div class="volunteer-image">
-            <img :src="item.image" :alt="item.title" />
+            <img :src="item.image" :alt="item.title" loading="lazy" />
           </div>
           <div class="volunteer-card-content">
             <div class="volunteer-header">
@@ -51,7 +51,7 @@ const volunteers = [
     title: "Runner Division at the BWAI x 2026 International Women's Day Event",
     organization: 'GDG Bali',
     date: 'Apr 2026',
-    image: '/volunteers/BuildWithAi.jpeg',
+    image: '/volunteers/BuildWithAi.webp',
     description: 'Served in the Runner Division for the Build With AI (BWAI) x International Women\'s Day event. Handled pre-event setup, hardware configurations, and venue logistics to ensure a successful tech event.',
     highlights: [
       'Helped set up the facilities the day before and on the day of the event',
@@ -63,7 +63,7 @@ const volunteers = [
     title: 'Event Volunteer - Hall Runner at DevFest Bali 2025',
     organization: 'GDG Bali',
     date: 'Dec 2025',
-    image: '/volunteers/DevFest.jpeg',
+    image: '/volunteers/DevFest.webp',
     description: 'Worked as a Hall Runner at DevFest Bali 2025. Enabled smooth speaker transitions, coordinated active Q&A participation, and managed merchandise distribution to encourage audience engagement.',
     highlights: [
       'Ensured seamless transitions between sessions by assisting speakers with on-stage logistics.',
@@ -76,7 +76,7 @@ const volunteers = [
     title: 'Event Organizer and technical at GDGoC Meetup with GDE - AI Edition',
     organization: 'GDGoC Primakara',
     date: 'Oct 2025',
-    image: '/volunteers/GDGoC-Meetup.jpeg',
+    image: '/volunteers/GDGoC-Meetup.webp',
     description: 'Assisted in organizing the GDGoC Meetup with a Google Developer Expert (AI Edition). Managed event flow, facility setups, infrastructure prep, and hall layout arrangement for an optimal attendee experience.',
     highlights: [
       'Managing how the event runs',
@@ -89,7 +89,7 @@ const volunteers = [
     title: 'Member of the equipment division at the Google I/O Extended Bali 2025',
     organization: 'GDG Bali',
     date: 'Aug 2025',
-    image: '/volunteers/GoogleI-O.jpeg',
+    image: '/volunteers/GoogleI-O.webp',
     description: 'Supported Google I/O Extended Bali 2025 by managing venue readiness, seating arrangements, and attendee navigation. Also volunteered as a workshop facilitator to guide attendees through technical codelabs.',
     highlights: [
       'Helped take care of the room that would be used during the event.',
@@ -103,7 +103,7 @@ const volunteers = [
     title: 'Served as Committee Chair at the DevShare 2025 ',
     organization: 'Primakara Developers',
     date: 'Feb 2025',
-    image: '/volunteers/Devshare2025.jpeg',
+    image: '/volunteers/Devshare2025.webp',
     description: 'Led the organization of DevShare 2025 as Committee Chair. Coordinated cross-functional teams, delegated key responsibilities, and established prep-to-execution timelines to ensure the event ran smoothly.',
     highlights: [
       'Coordinate the entire committee for the continuity of the event.',
@@ -116,7 +116,7 @@ const volunteers = [
     title: 'Member of Security Division at Bali Startup Camp 2024',
     organization: 'HIMA IF Primakara',
     date: 'Dec 2024',
-    image: '/volunteers/BSC.jpeg',
+    image: '/volunteers/BSC.webp',
     description: 'Contributed to the security division at Bali Startup Camp 2024. Handled timeline planning, regulatory formulation for participants and organizers, logistics parking blueprints, and event day surveillance while tracking committee attendance recaps.',
     highlights: [
       'Create a timeline for the security division.',
@@ -131,7 +131,7 @@ const volunteers = [
     title: 'Security Division Coordinator',
     organization: 'Primakara English Competition',
     date: 'July 2024',
-    image: '/volunteers/PEC.jpeg',
+    image: '/volunteers/PEC.webp',
     description: 'Coordinated the security operations and team members for the Primakara English Competition. Created and executed detailed vehicle parking layouts and event day safety guidelines to ensure a secure and smooth experience for all attendees, guests, and judges.',
     highlights: [
       'Organize event security on the day of the event.',

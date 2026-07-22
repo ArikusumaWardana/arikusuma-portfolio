@@ -2,12 +2,12 @@
   <div class="page home-page">
     <div class="home-content animate-fadeIn">
       <div class="profile-photo animate-float">
-        <img src="/profile.png" alt="Profile Photo" />
+        <img src="/profile.webp" alt="Arikusuma Wardana Profile Photo" />
       </div>
 
-      <h1 class="home-name">
+      <h2 class="home-name">
         <span class="gradient-text">Arikusuma Wardana</span>
-      </h1>
+      </h2>
 
       <p class="home-tagline">
         Web Developer & Game Programmer
@@ -45,6 +45,27 @@
 <script setup>
 import { ChevronDown, Github, Instagram, Linkedin } from 'lucide-vue-next';
 import SocialIcon from '../components/SocialIcon.vue';
+import { useHead } from '@unhead/vue';
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Arikusuma Wardana",
+        "jobTitle": "Web Developer & Game Developer",
+        "url": "https://arikusuma-wardana.vercel.app/",
+        "sameAs": [
+          "https://github.com/ArikusumaWardana",
+          "https://www.linkedin.com/in/arikusuma-wardana/",
+          "https://instagram.com/arikusuma.05"
+        ]
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@
   <div class="page skill-page">
     <div class="skill-content animate-fadeIn">
       <div class="page-title">
-        <h1><span class="gradient-text">My Skills</span></h1>
+        <h2><span class="gradient-text">My Skills</span></h2>
         <p>Technologies and languages I work with</p>
       </div>
 

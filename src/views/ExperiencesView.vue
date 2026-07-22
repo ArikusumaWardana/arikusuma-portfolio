@@ -2,7 +2,7 @@
   <div class="page experiences-page">
     <div class="experiences-content animate-fadeIn">
       <div class="page-title">
-        <h1><span class="gradient-text">My Experiences</span></h1>
+        <h2><span class="gradient-text">My Experiences</span></h2>
         <p>My professional journey and work history</p>
       </div>
 

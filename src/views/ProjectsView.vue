@@ -2,7 +2,7 @@
   <div class="page projects-page">
     <div class="projects-content animate-fadeIn">
       <div class="page-title">
-        <h1><span class="gradient-text">My Projects</span></h1>
+        <h2><span class="gradient-text">My Projects</span></h2>
         <p>Some of my recent work and side projects</p>
       </div>
 
@@ -32,21 +32,21 @@ const projects = [
   {
     name: 'Kwitansi Website',
     description: 'A streamlined web application for creating and generating simple receipts with PDF export functionality.',
-    image: '/projects/kwitansi.png',
+    image: '/projects/kwitansi.webp',
     techStack: ['HTML', 'CSS', 'Bootstrap', 'PHP', 'mPDF'],
     githubUrl: 'https://github.com/ArikusumaWardana/form-kwitansi'
   },
   {
     name: 'Buku Explore Website',
     description: 'An e-commerce platform for browsing and purchasing books with a clean and user-friendly interface.',
-    image: '/projects/buku-explore.png',
+    image: '/projects/buku-explore.webp',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Laravel'],
     githubUrl: 'https://github.com/ArikusumaWardana/BukuExplore-Website'
   },
   {
     name: 'Primdev Blog',
     description: 'A modern blog platform that fetches and displays content dynamically from an external API.',
-    image: '/projects/primdev-blog.png',
+    image: '/projects/primdev-blog.webp',
     techStack: ['Vue.js', 'Tailwind CSS', 'API', 'Vercel'],
     websiteUrl: 'https://primdev-blog.vercel.app/',
     githubUrl: 'https://github.com/ArikusumaWardana/primdev-blog'
@@ -54,7 +54,7 @@ const projects = [
   {
     name: 'Refill Universe Website',
     description: 'A community website built for the Morning 2 Informatics class of Primakara University to share resources and connect.',
-    image: '/projects/reffill-universe.png',
+    image: '/projects/reffill-universe.webp',
     techStack: ['Vue.js', 'Tailwind CSS', 'Vercel'],
     websiteUrl: 'https://refill-universe.vercel.app/',
     githubUrl: 'https://github.com/ArikusumaWardana/refill-universe'
@@ -62,7 +62,7 @@ const projects = [
   {
     name: 'Clock Website',
     description: 'A minimalist digital clock application displaying the current day, date, month, and time in real-time.',
-    image: '/projects/clock.png',
+    image: '/projects/clock.webp',
     techStack: ['HTML', 'CSS', 'JavaScript'],
     websiteUrl: 'https://arikusumawardana.github.io/Clock/',
     githubUrl: 'https://github.com/ArikusumaWardana/Clock'
@@ -70,21 +70,21 @@ const projects = [
   {
     name: 'Novels Up Website',
     description: 'A reading platform designed for light novel and web novel enthusiasts to discover and read various stories.',
-    image: '/projects/novels-up.png',
+    image: '/projects/novels-up.webp',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Laravel'],
     githubUrl: 'https://github.com/ArikusumaWardana/Novels-Up'
   },
   {
     name: 'ScxLyrics Website',
     description: 'A lyrics discovery platform that allows users to search and view song lyrics from various artists.',
-    image: '/projects/scxlyrics.png',
+    image: '/projects/scxlyrics.webp',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP'],
     githubUrl: 'https://github.com/ArikusumaWardana/scxlyrics'
   },
   {
     name: 'Movieque Website',
     description: 'A movie discovery application that displays detailed information about films, including ratings, synopsis, and cast.',
-    image: '/projects/movieque.png',
+    image: '/projects/movieque.webp',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'API', 'Vercel'],
     websiteUrl: 'https://movieque-tau.vercel.app/',
     githubUrl: 'https://github.com/ArikusumaWardana/movieque'
@@ -92,7 +92,7 @@ const projects = [
   {
     name: 'Tisgumi Website',
     description: 'A professional business landing page for Tisgumi, featuring an integrated point-of-sale cashier system.',
-    image: '/projects/tisgumi.png',
+    image: '/projects/tisgumi.webp',
     techStack: ['TypeScript', 'Next.js', 'Prisma', 'Supabase', 'Vercel'],
     websiteUrl: 'https://tisgumi.vercel.app/',
     githubUrl: 'https://github.com/ArikusumaWardana/tisgumi-website'
@@ -107,7 +107,7 @@ const projects = [
   {
     name: 'Animatronics Afterhouse',
     description: 'A horror game project inspired by Five Nights at Freddy\'s 2, featuring immersive gameplay using real-life photo and video assets.',
-    image: '/projects/animatronics afterhouse.png',
+    image: '/projects/animatronics afterhouse.webp',
     techStack: ['Unity', 'C#', 'Plastic CSM'],
   },
   {
@@ -121,7 +121,7 @@ const projects = [
     name: 'Vital Fizz Landing Page',
     description: "VITAL FIZZ is a landing page website introducing carbonated herbal drinks that combine Indonesian spices with today's lifestyle.",
     techStack: ['Vue JS', 'Tailwind CSS'],
-    image: '/projects/vitalfizz.png',
+    image: '/projects/vitalfizz.webp',
     websiteUrl: 'https://vitalfizz.vercel.app/',
     githubUrl: 'https://github.com/ArikusumaWardana/Vital-Fizz'
   }

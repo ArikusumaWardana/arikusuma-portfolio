@@ -1,7 +1,7 @@
 <template>
   <div class="card tool-card">
     <div class="tool-icon">
-      <img :src="iconUrl" :alt="name" v-if="iconUrl" />
+      <img :src="iconUrl" :alt="name" loading="lazy" v-if="iconUrl" />
       <component :is="icon" :size="32" v-else-if="icon" />
     </div>
     <h3 class="tool-name">{{ name }}</h3>

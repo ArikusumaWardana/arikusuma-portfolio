@@ -2,7 +2,7 @@
   <div class="page about-page">
     <div class="about-content animate-fadeIn">
       <div class="page-title">
-        <h1><span class="gradient-text">About Me</span></h1>
+        <h2><span class="gradient-text">About Me</span></h2>
         <p>Get to know me better</p>
       </div>
 

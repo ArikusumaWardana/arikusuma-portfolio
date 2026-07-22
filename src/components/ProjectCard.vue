@@ -1,7 +1,7 @@
 <template>
   <div class="card project-card">
     <div class="project-image">
-      <img :src="image" :alt="name" />
+      <img :src="image" :alt="name" loading="lazy" />
       <div class="project-links" v-if="websiteUrl || githubUrl">
         <a
           v-if="websiteUrl"

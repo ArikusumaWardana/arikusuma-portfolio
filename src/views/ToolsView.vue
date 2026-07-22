@@ -2,7 +2,7 @@
   <div class="page tools-page">
     <div class="tools-content animate-fadeIn">
       <div class="page-title">
-        <h1><span class="gradient-text">My Tools</span></h1>
+        <h2><span class="gradient-text">My Tools</span></h2>
         <p>Software and platforms I use daily</p>
       </div>
 
