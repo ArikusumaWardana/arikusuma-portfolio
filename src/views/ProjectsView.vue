@@ -109,6 +109,7 @@ const projects = [
     description: 'A horror game project inspired by Five Nights at Freddy\'s 2, featuring immersive gameplay using real-life photo and video assets.',
     image: '/projects/animatronics afterhouse.webp',
     techStack: ['Unity', 'C#', 'Plastic CSM'],
+    websiteUrl: 'https://gamejolt.com/games/animatronic_afterhours/1057914'
   },
   {
     name: "Face Emotion Recognition Densenet",
@@ -124,6 +125,14 @@ const projects = [
     image: '/projects/vitalfizz.webp',
     websiteUrl: 'https://vitalfizz.vercel.app/',
     githubUrl: 'https://github.com/ArikusumaWardana/Vital-Fizz'
+  },
+  {
+    name: 'Apsara Essence Website',
+    description: 'Apsara Essence is born from the richness of Indonesian spices that have been used for centuries in natural healing traditions. We blend local wisdom with modern research to create truly functional aromatherapy.',
+    techStack: ['Vue JS', 'Tailwind CSS'],
+    image: '/projects/apsara-essence.webp',
+    websiteUrl: 'https://apsara-essence.vercel.app/',
+    githubUrl: 'https://github.com/ArikusumaWardana/Apsara-Essence'
   }
 ]
 
