@@ -6,9 +6,22 @@
         <p>Some of my recent work and side projects</p>
       </div>
 
-      <div class="projects-grid grid grid-3">
+      <!-- Category Filter -->
+      <div class="filter-container">
+        <button
+          v-for="cat in filterCategories"
+          :key="cat"
+          class="filter-btn glass"
+          :class="{ active: activeFilter === cat }"
+          @click="setFilter(cat)"
+        >
+          {{ cat }}
+        </button>
+      </div>
+
+      <div class="projects-grid grid grid-3" :key="activeFilter + '-' + currentPage">
         <ProjectCard
-          v-for="(project, index) in reversedProjects"
+          v-for="(project, index) in paginatedProjects"
           :key="project.name"
           :name="project.name"
           :description="project.description"
@@ -20,15 +33,49 @@
           class="animate-fadeIn"
         />
       </div>
+
+      <!-- Pagination Controls -->
+      <div class="pagination-container" v-if="totalPages > 1">
+        <button
+          class="pagination-btn arrow-btn glass"
+          :disabled="currentPage === 1"
+          @click="setPage(currentPage - 1)"
+          aria-label="Previous Page"
+        >
+          <ChevronLeft :size="20" />
+        </button>
+
+        <div class="pagination-numbers">
+          <button
+            v-for="page in totalPages"
+            :key="page"
+            class="pagination-btn num-btn glass"
+            :class="{ active: currentPage === page }"
+            @click="setPage(page)"
+          >
+            {{ page }}
+          </button>
+        </div>
+
+        <button
+          class="pagination-btn arrow-btn glass"
+          :disabled="currentPage === totalPages"
+          @click="setPage(currentPage + 1)"
+          aria-label="Next Page"
+        >
+          <ChevronRight :size="20" />
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import ProjectCard from '../components/ProjectCard.vue';
 import { useHead } from '@unhead/vue';
 import { seoConfig } from '../config/seo';
+import { ChevronLeft, ChevronRight } from 'lucide-vue-next';
 
 useHead({
   title: 'Projects',
@@ -87,14 +134,16 @@ const projects = [
     description: 'A streamlined web application for creating and generating simple receipts with PDF export functionality.',
     image: '/projects/kwitansi.webp',
     techStack: ['HTML', 'CSS', 'Bootstrap', 'PHP', 'mPDF'],
-    githubUrl: 'https://github.com/ArikusumaWardana/form-kwitansi'
+    githubUrl: 'https://github.com/ArikusumaWardana/form-kwitansi',
+    category: 'Website'
   },
   {
     name: 'Buku Explore Website',
     description: 'An e-commerce platform for browsing and purchasing books with a clean and user-friendly interface.',
     image: '/projects/buku-explore.webp',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Laravel'],
-    githubUrl: 'https://github.com/ArikusumaWardana/BukuExplore-Website'
+    githubUrl: 'https://github.com/ArikusumaWardana/BukuExplore-Website',
+    category: 'Website'
   },
   {
     name: 'Primdev Blog',
@@ -102,7 +151,8 @@ const projects = [
     image: '/projects/primdev-blog.webp',
     techStack: ['Vue.js', 'Tailwind CSS', 'API', 'Vercel'],
     websiteUrl: 'https://primdev-blog.vercel.app/',
-    githubUrl: 'https://github.com/ArikusumaWardana/primdev-blog'
+    githubUrl: 'https://github.com/ArikusumaWardana/primdev-blog',
+    category: 'Website'
   },
   {
     name: 'Refill Universe Website',
@@ -110,7 +160,8 @@ const projects = [
     image: '/projects/reffill-universe.webp',
     techStack: ['Vue.js', 'Tailwind CSS', 'Vercel'],
     websiteUrl: 'https://refill-universe.vercel.app/',
-    githubUrl: 'https://github.com/ArikusumaWardana/refill-universe'
+    githubUrl: 'https://github.com/ArikusumaWardana/refill-universe',
+    category: 'Website'
   },
   {
     name: 'Clock Website',
@@ -118,21 +169,24 @@ const projects = [
     image: '/projects/clock.webp',
     techStack: ['HTML', 'CSS', 'JavaScript'],
     websiteUrl: 'https://arikusumawardana.github.io/Clock/',
-    githubUrl: 'https://github.com/ArikusumaWardana/Clock'
+    githubUrl: 'https://github.com/ArikusumaWardana/Clock',
+    category: 'Website'
   },
   {
     name: 'Novels Up Website',
     description: 'A reading platform designed for light novel and web novel enthusiasts to discover and read various stories.',
     image: '/projects/novels-up.webp',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Laravel'],
-    githubUrl: 'https://github.com/ArikusumaWardana/Novels-Up'
+    githubUrl: 'https://github.com/ArikusumaWardana/Novels-Up',
+    category: 'Website'
   },
   {
     name: 'ScxLyrics Website',
     description: 'A lyrics discovery platform that allows users to search and view song lyrics from various artists.',
     image: '/projects/scxlyrics.webp',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP'],
-    githubUrl: 'https://github.com/ArikusumaWardana/scxlyrics'
+    githubUrl: 'https://github.com/ArikusumaWardana/scxlyrics',
+    category: 'Website'
   },
   {
     name: 'Movieque Website',
@@ -140,7 +194,8 @@ const projects = [
     image: '/projects/movieque.webp',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'API', 'Vercel'],
     websiteUrl: 'https://movieque-tau.vercel.app/',
-    githubUrl: 'https://github.com/ArikusumaWardana/movieque'
+    githubUrl: 'https://github.com/ArikusumaWardana/movieque',
+    category: 'Website'
   },
   {
     name: 'Tisgumi Website',
@@ -148,28 +203,40 @@ const projects = [
     image: '/projects/tisgumi.webp',
     techStack: ['TypeScript', 'Next.js', 'Prisma', 'Supabase', 'Vercel'],
     websiteUrl: 'https://tisgumi.vercel.app/',
-    githubUrl: 'https://github.com/ArikusumaWardana/tisgumi-website'
+    githubUrl: 'https://github.com/ArikusumaWardana/tisgumi-website',
+    category: 'Website'
   },
   {
     name: 'Sentiment Analyst MLBB Reviews',
     description: 'A machine learning pipeline for performing sentiment analysis on Indonesian Mobile Legends game reviews.',
     image: '/projects/taskapp.svg',
     techStack: ['Python', 'IPYNB', 'NLP'],
-    githubUrl: 'https://github.com/ArikusumaWardana/Sentiment-Analysis-MLBB'
+    githubUrl: 'https://github.com/ArikusumaWardana/Sentiment-Analysis-MLBB',
+    category: 'Machine Learning'
+  },
+  {
+    name: 'Midnight Toys',
+    description: 'A tense 1980s survival horror game where you manage CCTV, flashlights, security shutters, and fear levels to contain rogue adaptive living doll prototypes. Developed as a competition entry for GIMERSIA.',
+    image: '/projects/midnight-toys.webp',
+    techStack: ['Unity', 'C#', 'Plastic SCM'],
+    websiteUrl: 'https://palm-gamestudio.itch.io/midnight-toys',
+    category: 'Game'
   },
   {
     name: 'Animatronics Afterhouse',
     description: 'A horror game project inspired by Five Nights at Freddy\'s 2, featuring immersive gameplay using real-life photo and video assets.',
     image: '/projects/animatronics afterhouse.webp',
     techStack: ['Unity', 'C#', 'Plastic CSM'],
-    websiteUrl: 'https://gamejolt.com/games/animatronic_afterhours/1057914'
+    websiteUrl: 'https://gamejolt.com/games/animatronic_afterhours/1057914',
+    category: 'Game'
   },
   {
     name: "Face Emotion Recognition Densenet",
     description: "An end-to-end Face Emotion Recognition (FER) system built with TensorFlow and Transfer Learning (DenseNet121), includes deployment-ready models in SavedModel, TF-Lite (Android), and TFJS (Web) formats.",
     image:'/projects/taskapp.svg',
     techStack: ['Python', 'DenseNet121', 'TensorFlow', 'IPYNB'],
-    githubUrl: 'https://github.com/ArikusumaWardana/face-emotion-recognition-densenet'
+    githubUrl: 'https://github.com/ArikusumaWardana/face-emotion-recognition-densenet',
+    category: 'Machine Learning'
   },
   {
     name: 'Vital Fizz Landing Page',
@@ -177,7 +244,8 @@ const projects = [
     techStack: ['Vue JS', 'Tailwind CSS'],
     image: '/projects/vitalfizz.webp',
     websiteUrl: 'https://vitalfizz.vercel.app/',
-    githubUrl: 'https://github.com/ArikusumaWardana/Vital-Fizz'
+    githubUrl: 'https://github.com/ArikusumaWardana/Vital-Fizz',
+    category: 'Website'
   },
   {
     name: 'Apsara Essence Website',
@@ -185,7 +253,8 @@ const projects = [
     techStack: ['Vue JS', 'Tailwind CSS'],
     image: '/projects/apsara-essence.webp',
     websiteUrl: 'https://apsara-essence.vercel.app/',
-    githubUrl: 'https://github.com/ArikusumaWardana/Apsara-Essence'
+    githubUrl: 'https://github.com/ArikusumaWardana/Apsara-Essence',
+    category: 'Website'
   },
   {
     name: 'Paw Splash',
@@ -193,18 +262,58 @@ const projects = [
     techStack: ['Unity', 'C#'],
     image: '/projects/paw-splash.webp',
     websiteUrl: 'https://palm-gamestudio.itch.io/pawsplash',
+    category: 'Game'
   },
   {
     name: 'EcoChain Website',
     description: "EcoChain is a transparent green supply chain platform connecting eco-conscious producers, consumers, and independent verifiers. Consumers can browse certified sustainable products while tracing each item's origin, carbon footprint, and verification status. Producers can register products to reach a wider eco-conscious market.",
     techStack: ['HTML', 'CSS', 'Javascript'],
     image: '/projects/ecochain.webp',
-    githubUrl: 'https://github.com/ArikusumaWardana/EcoChain-website'
+    githubUrl: 'https://github.com/ArikusumaWardana/EcoChain-website',
+    category: 'Website'
   }
 ]
 
 // Reverse order: index 0 appears at bottom, newest projects at top
 const reversedProjects = computed(() => [...projects].reverse())
+
+// Filter logic
+const activeFilter = ref('All')
+const filterCategories = ['All', 'Website', 'Game', 'Machine Learning']
+
+const filteredProjects = computed(() => {
+  if (activeFilter.value === 'All') {
+    return reversedProjects.value
+  }
+  return reversedProjects.value.filter(project => project.category === activeFilter.value)
+})
+
+function setFilter(category) {
+  activeFilter.value = category
+  currentPage.value = 1 // Reset to first page of results
+}
+
+// Pagination logic
+const currentPage = ref(1)
+const itemsPerPage = 6
+
+const totalPages = computed(() => Math.ceil(filteredProjects.value.length / itemsPerPage))
+
+const paginatedProjects = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage
+  return filteredProjects.value.slice(start, start + itemsPerPage)
+})
+
+function setPage(page) {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page
+    // Scroll smoothly to top of projects view
+    const element = document.querySelector('.projects-page')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -223,6 +332,112 @@ const reversedProjects = computed(() => [...projects].reverse())
   margin-top: var(--space-xl);
 }
 
+/* Filter Styles */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  animation: fadeIn var(--transition-slow) ease both;
+  animation-delay: 0.1s;
+}
+
+.filter-btn {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.filter-btn.active {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.filter-btn.active:hover {
+  box-shadow: var(--shadow-glow), var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Pagination Styles */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-3xl);
+  animation: fadeIn var(--transition-slow) ease both;
+  animation-delay: 0.2s;
+}
+
+.pagination-numbers {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  color: var(--text-primary);
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pagination-btn.active {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.pagination-btn.active:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow), var(--shadow-md);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 @media (max-width: 1024px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -232,6 +447,21 @@ const reversedProjects = computed(() => [...projects].reverse())
 @media (max-width: 640px) {
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .pagination-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  .pagination-container {
+    gap: var(--space-sm);
+  }
+  
+  .filter-btn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.85rem;
   }
 }
 </style>
