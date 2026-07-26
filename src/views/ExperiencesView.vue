@@ -42,6 +42,59 @@
 <script setup>
 import { ref } from 'vue'
 import { Briefcase } from 'lucide-vue-next'
+import { useHead } from '@unhead/vue'
+import { seoConfig } from '../config/seo'
+
+useHead({
+  title: 'Experiences',
+  meta: [
+    {
+      name: 'description',
+      content: `Explore the career journey, work history, and professional milestones of ${seoConfig.fullName} (${seoConfig.displayName}).`
+    },
+    {
+      name: 'keywords',
+      content: `work experience, career history, jobs, Unity game developer, PHP web developer, Palm Game Studio, ${seoConfig.displayName}`
+    },
+    // Open Graph
+    {
+      property: 'og:title',
+      content: `Experiences | ${seoConfig.displayName}`
+    },
+    {
+      property: 'og:description',
+      content: `Explore the career journey, work history, and professional milestones of ${seoConfig.fullName} (${seoConfig.displayName}).`
+    },
+    // Twitter Cards
+    {
+      name: 'twitter:title',
+      content: `Experiences | ${seoConfig.displayName}`
+    },
+    {
+      name: 'twitter:description',
+      content: `Explore the career journey, work history, and professional milestones of ${seoConfig.fullName} (${seoConfig.displayName}).`
+    }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${seoConfig.siteUrl}/experiences/#webpage`,
+        "url": `${seoConfig.siteUrl}/experiences`,
+        "name": `Experiences of ${seoConfig.displayName}`,
+        "description": `Professional history and work experiences of ${seoConfig.fullName}.`,
+        "isPartOf": {
+          "@id": `${seoConfig.siteUrl}/#website`
+        },
+        "about": {
+          "@id": `${seoConfig.siteUrl}/#person`
+        }
+      })
+    }
+  ]
+})
 
 const hoveredIndex = ref(null)
 

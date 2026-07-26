@@ -18,6 +18,15 @@ export const createApp = ViteSSG(
     }
   },
   ({ app, router, routes, isClient, initialState }) => {
-    // Custom setup if needed
+    if (isClient) {
+      import('./utils/analytics').then(({ initAnalytics, trackPageView }) => {
+        initAnalytics()
+        router.afterEach((to) => {
+          // Track page view after routing finishes
+          trackPageView(to.fullPath)
+        })
+      })
+    }
   }
 )
+

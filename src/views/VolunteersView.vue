@@ -45,6 +45,59 @@
 
 <script setup>
 import { HeartHandshake } from 'lucide-vue-next'
+import { useHead } from '@unhead/vue'
+import { seoConfig } from '../config/seo'
+
+useHead({
+  title: 'Volunteers',
+  meta: [
+    {
+      name: 'description',
+      content: `Explore the community volunteering, event organizing, and social initiatives that ${seoConfig.fullName} (${seoConfig.displayName}) participated in.`
+    },
+    {
+      name: 'keywords',
+      content: `volunteer work, community services, GDG Bali, tech events, Build with AI, ${seoConfig.displayName}`
+    },
+    // Open Graph
+    {
+      property: 'og:title',
+      content: `Volunteers | ${seoConfig.displayName}`
+    },
+    {
+      property: 'og:description',
+      content: `Explore the community volunteering, event organizing, and social initiatives that ${seoConfig.fullName} (${seoConfig.displayName}) participated in.`
+    },
+    // Twitter Cards
+    {
+      name: 'twitter:title',
+      content: `Volunteers | ${seoConfig.displayName}`
+    },
+    {
+      name: 'twitter:description',
+      content: `Explore the community volunteering, event organizing, and social initiatives that ${seoConfig.fullName} (${seoConfig.displayName}) participated in.`
+    }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${seoConfig.siteUrl}/volunteers/#webpage`,
+        "url": `${seoConfig.siteUrl}/volunteers`,
+        "name": `Volunteer Work of ${seoConfig.displayName}`,
+        "description": `Community work and volunteer activities of ${seoConfig.fullName}.`,
+        "isPartOf": {
+          "@id": `${seoConfig.siteUrl}/#website`
+        },
+        "about": {
+          "@id": `${seoConfig.siteUrl}/#person`
+        }
+      })
+    }
+  ]
+})
 
 const volunteers = [
   {

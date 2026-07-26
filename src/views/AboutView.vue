@@ -15,11 +15,11 @@
           <h2>Hello, I'm <span class="gradient-text">Arikusuma Wardana</span></h2>
 
           <p>
-            I'm an Informatics student at Primakara University with a background in full-stack web development. I enjoy turning ideas into usable products, from clean interfaces on the front end to solid logic on the back end.
+            My full name is <strong>Kadek Agus Arikusuma Wardana</strong> (often called <strong>Arikusuma</strong>). I'm an Informatics student at Primakara University with a background in full-stack web development. I enjoy turning ideas into usable products, from clean interfaces on the front end to solid logic on the back end.
           </p>
 
           <p>
-            Right now, I'm diving deeper into game development, especially with Unity. I've been handling several game projects, which helps me learn more about gameplay, performance, and creating better player experiences.I'm always open to learning, collaborating, and building things that people actually enjoy using.
+            Right now, I'm diving deeper into game development, especially with Unity. I've been handling several game projects, which helps me learn more about gameplay, performance, and creating better player experiences. I'm always open to learning, collaborating, and building things that people actually enjoy using.
           </p>
 
           <div class="about-highlights">
@@ -48,6 +48,59 @@
 
 <script setup>
 import { User, Code, Palette, Rocket, Heart } from 'lucide-vue-next'
+import { useHead } from '@unhead/vue'
+import { seoConfig } from '../config/seo'
+
+useHead({
+  title: 'About',
+  meta: [
+    {
+      name: 'description',
+      content: `Learn more about ${seoConfig.fullName} (${seoConfig.displayName} / ${seoConfig.nickName}). Discover my background, university study, and professional interests.`
+    },
+    {
+      name: 'keywords',
+      content: `About ${seoConfig.fullName}, About ${seoConfig.displayName}, ${seoConfig.nickName}, bio, developer profile, Primakara University`
+    },
+    // Open Graph
+    {
+      property: 'og:title',
+      content: `About | ${seoConfig.displayName}`
+    },
+    {
+      property: 'og:description',
+      content: `Learn more about ${seoConfig.fullName} (${seoConfig.displayName} / ${seoConfig.nickName}), Web Developer and Game Developer.`
+    },
+    // Twitter Cards
+    {
+      name: 'twitter:title',
+      content: `About | ${seoConfig.displayName}`
+    },
+    {
+      name: 'twitter:description',
+      content: `Learn more about ${seoConfig.fullName} (${seoConfig.displayName} / ${seoConfig.nickName}), Web Developer and Game Developer.`
+    }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": `${seoConfig.siteUrl}/about/#webpage`,
+        "url": `${seoConfig.siteUrl}/about`,
+        "name": `About ${seoConfig.displayName}`,
+        "description": `Learn more about ${seoConfig.fullName} (${seoConfig.displayName} / ${seoConfig.nickName}), Web Developer and Game Developer.`,
+        "isPartOf": {
+          "@id": `${seoConfig.siteUrl}/#website`
+        },
+        "about": {
+          "@id": `${seoConfig.siteUrl}/#person`
+        }
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped>

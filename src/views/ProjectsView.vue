@@ -27,6 +27,59 @@
 <script setup>
 import { computed } from 'vue';
 import ProjectCard from '../components/ProjectCard.vue';
+import { useHead } from '@unhead/vue';
+import { seoConfig } from '../config/seo';
+
+useHead({
+  title: 'Projects',
+  meta: [
+    {
+      name: 'description',
+      content: `Explore creative web applications and Unity game projects developed by ${seoConfig.fullName} (${seoConfig.displayName}).`
+    },
+    {
+      name: 'keywords',
+      content: `projects, portfolio, web apps, games, Unity, Laravel, Vue.js, C#, ${seoConfig.displayName}, ${seoConfig.fullName}`
+    },
+    // Open Graph
+    {
+      property: 'og:title',
+      content: `Projects | ${seoConfig.displayName}`
+    },
+    {
+      property: 'og:description',
+      content: `Explore creative web applications and Unity game projects developed by ${seoConfig.fullName} (${seoConfig.displayName}).`
+    },
+    // Twitter Cards
+    {
+      name: 'twitter:title',
+      content: `Projects | ${seoConfig.displayName}`
+    },
+    {
+      name: 'twitter:description',
+      content: `Explore creative web applications and Unity game projects developed by ${seoConfig.fullName} (${seoConfig.displayName}).`
+    }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": `${seoConfig.siteUrl}/projects/#webpage`,
+        "url": `${seoConfig.siteUrl}/projects`,
+        "name": `Projects by ${seoConfig.displayName}`,
+        "description": `Explore web applications and game projects developed by ${seoConfig.fullName}.`,
+        "isPartOf": {
+          "@id": `${seoConfig.siteUrl}/#website`
+        },
+        "about": {
+          "@id": `${seoConfig.siteUrl}/#person`
+        }
+      })
+    }
+  ]
+})
 
 const projects = [
   {

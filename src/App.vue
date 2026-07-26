@@ -2,7 +2,7 @@
   <div id="app-wrapper">
     <ParticleBackground />
     <Navbar />
-    <h1 class="sr-only">Arikusuma Wardana - Web Developer & Game Developer</h1>
+    <h1 class="sr-only">{{ seoConfig.fullName }} - Web Developer & Game Developer</h1>
     <main class="main-content">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -19,13 +19,26 @@ import { useHead } from '@unhead/vue'
 import ParticleBackground from './components/ParticleBackground.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
+import { seoConfig } from './config/seo'
 
 useHead({
-  titleTemplate: (title) => title ? `${title} | Arikusuma Wardana` : 'Arikusuma Wardana | Web Developer & Game Developer Portfolio',
+  titleTemplate: (title) => title ? `${title} | ${seoConfig.displayName}` : seoConfig.defaultTitle,
   meta: [
     {
       name: 'description',
-      content: 'Arikusuma Wardana is a Web Developer & Game Developer. Explore my creative projects built with Vue.js, Vue Router, Vite, and JavaScript.'
+      content: seoConfig.defaultDescription
+    },
+    {
+      name: 'keywords',
+      content: seoConfig.defaultKeywords
+    },
+    {
+      name: 'author',
+      content: seoConfig.fullName
+    },
+    {
+      name: 'google-site-verification',
+      content: seoConfig.googleSearchConsoleId
     }
   ]
 })

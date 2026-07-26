@@ -2,7 +2,7 @@
   <div class="page home-page">
     <div class="home-content animate-fadeIn">
       <div class="profile-photo animate-float">
-        <img src="/profile.webp" alt="Arikusuma Wardana Profile Photo" />
+        <img src="/profile.webp" alt="Kadek Agus Arikusuma Wardana (Arikusuma Wardana / Arikusuma) Profile Photo" />
       </div>
 
       <h2 class="home-name">
@@ -46,21 +46,75 @@
 import { ChevronDown, Github, Instagram, Linkedin } from 'lucide-vue-next';
 import SocialIcon from '../components/SocialIcon.vue';
 import { useHead } from '@unhead/vue';
+import { seoConfig } from '../config/seo';
 
 useHead({
+  // Home page uses the default title configured globally, so we keep title empty to trigger titleTemplate fallback.
+  title: '',
+  meta: [
+    {
+      name: 'description',
+      content: seoConfig.defaultDescription
+    },
+    {
+      name: 'keywords',
+      content: seoConfig.defaultKeywords
+    },
+    // Open Graph
+    {
+      property: 'og:title',
+      content: seoConfig.defaultTitle
+    },
+    {
+      property: 'og:description',
+      content: seoConfig.defaultDescription
+    },
+    {
+      property: 'og:url',
+      content: seoConfig.siteUrl
+    },
+    // Twitter Cards
+    {
+      name: 'twitter:title',
+      content: seoConfig.defaultTitle
+    },
+    {
+      name: 'twitter:description',
+      content: seoConfig.defaultDescription
+    }
+  ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Arikusuma Wardana",
-        "jobTitle": "Web Developer & Game Developer",
-        "url": "https://arikusuma-wardana.vercel.app/",
-        "sameAs": [
-          "https://github.com/ArikusumaWardana",
-          "https://www.linkedin.com/in/arikusuma-wardana/",
-          "https://instagram.com/arikusuma.05"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": `${seoConfig.siteUrl}/#person`,
+            "name": seoConfig.fullName,
+            "additionalName": seoConfig.nickName,
+            "alternateName": seoConfig.displayName,
+            "jobTitle": "Web Developer & Game Developer",
+            "url": seoConfig.siteUrl,
+            "image": `${seoConfig.siteUrl}/profile.webp`,
+            "sameAs": [
+              seoConfig.socialLinks.github,
+              seoConfig.socialLinks.linkedin,
+              seoConfig.socialLinks.instagram
+            ],
+            "knowsAbout": ["Web Development", "Game Development", "Vue.js", "Vite", "C#", "Unity"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": `${seoConfig.siteUrl}/#website`,
+            "url": seoConfig.siteUrl,
+            "name": seoConfig.displayName,
+            "publisher": {
+              "@id": `${seoConfig.siteUrl}/#person`
+            },
+            "description": seoConfig.defaultDescription
+          }
         ]
       })
     }

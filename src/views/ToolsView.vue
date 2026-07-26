@@ -35,6 +35,59 @@ import {
     Server
 } from 'lucide-vue-next';
 import ToolCard from '../components/ToolCard.vue';
+import { useHead } from '@unhead/vue';
+import { seoConfig } from '../config/seo';
+
+useHead({
+  title: 'Tools',
+  meta: [
+    {
+      name: 'description',
+      content: `Explore the developer tools, software environments, and platforms used daily by ${seoConfig.fullName} (${seoConfig.displayName}).`
+    },
+    {
+      name: 'keywords',
+      content: `developer tools, VS Code, Laragon, Unity, GitHub, Supabase, PHPStorm, toolset, developer environment, ${seoConfig.displayName}`
+    },
+    // Open Graph
+    {
+      property: 'og:title',
+      content: `Tools | ${seoConfig.displayName}`
+    },
+    {
+      property: 'og:description',
+      content: `Explore the developer tools, software environments, and platforms used daily by ${seoConfig.fullName} (${seoConfig.displayName}).`
+    },
+    // Twitter Cards
+    {
+      name: 'twitter:title',
+      content: `Tools | ${seoConfig.displayName}`
+    },
+    {
+      name: 'twitter:description',
+      content: `Explore the developer tools, software environments, and platforms used daily by ${seoConfig.fullName} (${seoConfig.displayName}).`
+    }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${seoConfig.siteUrl}/tools/#webpage`,
+        "url": `${seoConfig.siteUrl}/tools`,
+        "name": `Tools of ${seoConfig.displayName}`,
+        "description": `Developer tools and setup used by ${seoConfig.fullName}.`,
+        "isPartOf": {
+          "@id": `${seoConfig.siteUrl}/#website`
+        },
+        "about": {
+          "@id": `${seoConfig.siteUrl}/#person`
+        }
+      })
+    }
+  ]
+})
 
 const tools = [
   {
