@@ -27,17 +27,34 @@
     </div>
     <div class="project-content">
       <h3 class="project-name">{{ name }}</h3>
-      <p class="project-description">{{ description }}</p>
+      <p 
+        class="project-description"
+        @mouseenter="showTooltip = true"
+        @mouseleave="showTooltip = false"
+        @mousemove="updateTooltipPos"
+      >{{ description }}</p>
       <div class="project-tech">
         <span v-for="tech in techStack" :key="tech" class="tech-badge">
           {{ tech }}
         </span>
       </div>
     </div>
+    <Teleport to="body">
+      <transition name="tooltip-fade">
+        <div 
+          v-if="showTooltip" 
+          class="custom-tooltip"
+          :style="{ left: tooltipX + 'px', top: tooltipY + 'px' }"
+        >
+          {{ description }}
+        </div>
+      </transition>
+    </Teleport>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { Github, ExternalLink } from 'lucide-vue-next'
 
 defineProps({
@@ -66,6 +83,26 @@ defineProps({
     default: ''
   }
 })
+
+const showTooltip = ref(false)
+const tooltipX = ref(0)
+const tooltipY = ref(0)
+
+const updateTooltipPos = (e) => {
+  let x = e.clientX + 15
+  let y = e.clientY + 15
+  
+  // Basic boundary check to prevent tooltip from going off-screen
+  if (x + 320 > window.innerWidth) {
+    x = e.clientX - 320
+  }
+  if (y + 100 > window.innerHeight) {
+    y = e.clientY - 100
+  }
+  
+  tooltipX.value = x
+  tooltipY.value = y
+}
 </script>
 
 <style scoped>
@@ -171,5 +208,34 @@ defineProps({
   background: var(--gradient-primary);
   color: white;
   border-radius: var(--radius-full);
+}
+</style>
+
+<style>
+.custom-tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  max-width: 320px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-color);
+  pointer-events: none;
+  line-height: 1.6;
+  backdrop-filter: blur(10px);
+}
+
+.tooltip-fade-enter-active,
+.tooltip-fade-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tooltip-fade-enter-from,
+.tooltip-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
 }
 </style>

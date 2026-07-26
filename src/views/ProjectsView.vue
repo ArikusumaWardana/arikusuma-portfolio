@@ -100,7 +100,7 @@ const projects = [
   {
     name: 'Sentiment Analyst MLBB Reviews',
     description: 'A machine learning pipeline for performing sentiment analysis on Indonesian Mobile Legends game reviews.',
-    image: '/projects/game.svg',
+    image: '/projects/taskapp.svg',
     techStack: ['Python', 'IPYNB', 'NLP'],
     githubUrl: 'https://github.com/ArikusumaWardana/Sentiment-Analysis-MLBB'
   },
@@ -114,7 +114,7 @@ const projects = [
   {
     name: "Face Emotion Recognition Densenet",
     description: "An end-to-end Face Emotion Recognition (FER) system built with TensorFlow and Transfer Learning (DenseNet121), includes deployment-ready models in SavedModel, TF-Lite (Android), and TFJS (Web) formats.",
-    image:'/projects/game.svg',
+    image:'/projects/taskapp.svg',
     techStack: ['Python', 'DenseNet121', 'TensorFlow', 'IPYNB'],
     githubUrl: 'https://github.com/ArikusumaWardana/face-emotion-recognition-densenet'
   },
@@ -133,6 +133,13 @@ const projects = [
     image: '/projects/apsara-essence.webp',
     websiteUrl: 'https://apsara-essence.vercel.app/',
     githubUrl: 'https://github.com/ArikusumaWardana/Apsara-Essence'
+  },
+  {
+    name: 'Paw Splash',
+    description: 'Step into the paws of an orange cat and survive an all-out water balloon battle against mischievous rival cats in this auto-deflection survival game. Developed for Gameseed 2026.',
+    techStack: ['Unity', 'C#'],
+    image: '/projects/paw-splash.webp',
+    websiteUrl: 'https://palm-gamestudio.itch.io/pawsplash',
   },
   {
     name: 'EcoChain Website',
