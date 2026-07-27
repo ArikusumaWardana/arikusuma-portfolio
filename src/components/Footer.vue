@@ -19,6 +19,12 @@
         <a href="https://www.linkedin.com/in/arikusuma-wardana/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
           <Linkedin :size="20" />
         </a>
+        <a href="mailto:arikusuma.05@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Email">
+          <Mail :size="20" />
+        </a>
+        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp">
+          <MessageCircle :size="20" />
+        </a>
       </div>
 
       <div class="footer-bottom">
@@ -30,7 +36,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { Instagram, Github, Linkedin } from 'lucide-vue-next'
+import { Instagram, Github, Linkedin, Mail, MessageCircle } from 'lucide-vue-next'
 
 const currentYear = computed(() => new Date().getFullYear())
 </script>
