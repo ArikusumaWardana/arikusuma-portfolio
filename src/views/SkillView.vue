@@ -2,7 +2,7 @@
   <div class="page skill-page">
     <div class="skill-content animate-fadeIn">
       <div class="page-title">
-        <h2>My <span class="text-accent">Skills</span></h2>
+        <h2>My <span class="text-accent">Tech Stack</span></h2>
         <p>Technologies and languages I work with</p>
       </div>
 
@@ -40,31 +40,31 @@ import { useHead } from '@unhead/vue';
 import { seoConfig } from '../config/seo';
 
 useHead({
-  title: 'Skills',
+  title: 'Tech Stack',
   meta: [
     {
       name: 'description',
-      content: `Discover technical skills, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Discover tech stack, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
     },
     {
       name: 'keywords',
-      content: `skills, developer skills, technologies, HTML, CSS, JavaScript, TypeScript, PHP, C#, Vue.js, Laravel, Unity, ${seoConfig.displayName}`
+      content: `tech stack, developer skills, technologies, HTML, CSS, JavaScript, TypeScript, PHP, C#, Vue.js, Laravel, Unity, ${seoConfig.displayName}`
     },
     {
       property: 'og:title',
-      content: `Skills | ${seoConfig.displayName}`
+      content: `Tech Stack | ${seoConfig.displayName}`
     },
     {
       property: 'og:description',
-      content: `Discover technical skills, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Discover tech stack, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
     },
     {
       name: 'twitter:title',
-      content: `Skills | ${seoConfig.displayName}`
+      content: `Tech Stack | ${seoConfig.displayName}`
     },
     {
       name: 'twitter:description',
-      content: `Discover technical skills, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Discover tech stack, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
     }
   ],
   script: [
@@ -73,9 +73,9 @@ useHead({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "@id": `${seoConfig.siteUrl}/skill/#webpage`,
-        "url": `${seoConfig.siteUrl}/skill`,
-        "name": `Skills of ${seoConfig.displayName}`,
+        "@id": `${seoConfig.siteUrl}/tech-stack/#webpage`,
+        "url": `${seoConfig.siteUrl}/tech-stack`,
+        "name": `Tech Stack of ${seoConfig.displayName}`,
         "description": `Technical skills and technologies mastered by ${seoConfig.fullName}.`,
         "isPartOf": {
           "@id": `${seoConfig.siteUrl}/#website`

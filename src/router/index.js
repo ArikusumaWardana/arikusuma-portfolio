@@ -13,8 +13,8 @@ export const routes = [
     component: () => import('../views/AboutView.vue')
   },
   {
-    path: '/skill',
-    name: 'Skill',
+    path: '/tech-stack',
+    name: 'Tech Stack',
     component: () => import('../views/SkillView.vue')
   },
   {

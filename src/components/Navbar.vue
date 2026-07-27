@@ -44,7 +44,7 @@ const isDark = ref(false)
 const navLinks = [
   { name: 'Home', path: '/', icon: Home },
   { name: 'About', path: '/about', icon: User },
-  { name: 'Skill', path: '/skill', icon: Zap },
+  { name: 'Tech Stack', path: '/tech-stack', icon: Zap },
   { name: 'Tools', path: '/tools', icon: Wrench },
   { name: 'Projects', path: '/projects', icon: FolderKanban },
   { name: 'Experiences', path: '/experiences', icon: BriefcaseBusiness },

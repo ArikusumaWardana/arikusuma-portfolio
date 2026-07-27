@@ -49,6 +49,16 @@
                 link="https://www.linkedin.com/in/arikusuma-wardana/"
                 :icon="Linkedin"
               />
+              <SocialIcon
+                name="Email"
+                link="mailto:arikusumawardana09@gmail.com"
+                :icon="Mail"
+              />
+              <SocialIcon
+                name="WhatsApp"
+                link="https://wa.me/6285339307788"
+                :icon="MessageCircle"
+              />
             </div>
           </div>
 
@@ -105,6 +115,8 @@ import {
   GraduationCap,
   Instagram,
   Linkedin,
+  Mail,
+  MessageCircle,
   Sparkles,
   User
 } from 'lucide-vue-next';

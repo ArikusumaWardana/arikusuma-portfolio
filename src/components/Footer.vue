@@ -4,7 +4,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <img src="/logo.svg?v=2" alt="Arikusuma Wardana Logo" loading="lazy" class="brand-logo" />
-          <span>Portfolio</span>
+          <span>Arikusuma Wardana</span>
         </div>
         <p class="footer-tagline">Crafting digital experiences with passion and precision.</p>
       </div>
@@ -19,10 +19,10 @@
         <a href="https://www.linkedin.com/in/arikusuma-wardana/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
           <Linkedin :size="20" />
         </a>
-        <a href="mailto:arikusuma.05@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Email">
+        <a href="mailto:arikusumawardana09@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Email">
           <Mail :size="20" />
         </a>
-        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp">
+        <a href="https://wa.me/6285339307788" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp">
           <MessageCircle :size="20" />
         </a>
       </div>

@@ -5,7 +5,7 @@
     <h1 class="sr-only">{{ seoConfig.fullName }} - Web Developer & Game Developer</h1>
     <main class="main-content">
       <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
+        <transition name="fade" mode="out-in" @before-enter="onBeforeEnter">
           <component :is="Component" />
         </transition>
       </router-view>
@@ -20,6 +20,10 @@ import LiveGridBackground from './components/LiveGridBackground.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import { seoConfig } from './config/seo'
+
+const onBeforeEnter = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
 useHead({
   titleTemplate: (title) => title ? `${title} | ${seoConfig.displayName}` : seoConfig.defaultTitle,
