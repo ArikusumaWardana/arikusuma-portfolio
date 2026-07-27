@@ -1,10 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6"/>
-      <stop offset="100%" style="stop-color:#6366f1"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#logoGrad)"/>
-  <text x="20" y="27" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">AW</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <style>
+    .accent { stroke: #00B88A; }
+    @media (prefers-color-scheme: dark) {
+      .accent { stroke: #00D9A3; }
+    }
+  </style>
+  
+  <!-- Outer Hexagon -->
+  <path class="accent" d="M40 6 L69 22 V58 L40 74 L11 58 V22 Z" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <!-- Letter A -->
+  <path class="accent" d="M40 24 L24 56 M40 24 L56 56 M30 46 H50" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

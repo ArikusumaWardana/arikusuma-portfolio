@@ -1,6 +1,6 @@
 <template>
   <div id="app-wrapper">
-    <ParticleBackground />
+    <LiveGridBackground />
     <Navbar />
     <h1 class="sr-only">{{ seoConfig.fullName }} - Web Developer & Game Developer</h1>
     <main class="main-content">
@@ -16,7 +16,7 @@
 
 <script setup>
 import { useHead } from '@unhead/vue'
-import ParticleBackground from './components/ParticleBackground.vue'
+import LiveGridBackground from './components/LiveGridBackground.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import { seoConfig } from './config/seo'

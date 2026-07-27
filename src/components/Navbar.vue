@@ -1,12 +1,12 @@
 <template>
-  <nav class="navbar glass">
+  <nav class="navbar">
     <div class="navbar-container">
       <router-link to="/" class="navbar-brand">
-        <img src="/logo.svg" alt="Arikusuma Wardana Logo" class="brand-logo" />
-        <span class="brand-text">Arikusuma</span>
+        <img src="/logo.svg?v=2" alt="Arikusuma Wardana Logo" class="brand-logo" />
+        <span class="brand-text">Arikusuma<span class="text-accent">.</span></span>
       </router-link>
 
-      <button class="hamburger" :class="{ active: isMenuOpen }" @click="toggleMenu">
+      <button class="hamburger" :class="{ active: isMenuOpen }" @click="toggleMenu" aria-label="Toggle Navigation Menu">
         <span></span>
         <span></span>
         <span></span>
@@ -74,7 +74,6 @@ onMounted(() => {
     isDark.value = false
     document.documentElement.setAttribute('data-theme', 'light')
   } else {
-    // Check system preference
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     isDark.value = prefersDark
     document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
@@ -90,14 +89,15 @@ onMounted(() => {
   right: 0;
   height: 70px;
   z-index: var(--z-navbar);
-  border-bottom: 1px solid var(--border-color);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .navbar-container {
   max-width: 1200px;
   height: 100%;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 var(--space-4);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,50 +106,54 @@ onMounted(() => {
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-2);
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
   text-decoration: none;
 }
 
 .brand-logo {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
 }
 
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-1);
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-full);
-  color: var(--text-secondary);
+  gap: var(--space-1);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
   font-weight: 500;
-  font-size: 0.9rem;
-  transition: all var(--transition-normal);
+  font-size: 0.875rem;
+  transition: all var(--duration-fast) var(--ease-standard);
+  border: 1px solid transparent;
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
-  background: var(--bg-card);
+  color: var(--color-text-primary);
+  background: var(--color-surface-raised);
+  border-color: var(--color-border);
 }
 
 .nav-link.active {
-  color: white;
-  background: var(--gradient-primary);
+  color: var(--color-accent-text);
+  background: var(--color-accent-muted);
+  border-color: transparent;
+  font-weight: 600;
 }
 
 .theme-toggle {
-  margin-left: var(--space-sm);
+  margin-left: var(--space-2);
 }
 
 .hamburger {
@@ -169,9 +173,9 @@ onMounted(() => {
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--text-primary);
+  background: var(--color-text-primary);
   border-radius: 2px;
-  transition: all var(--transition-normal);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .hamburger.active span:nth-child(1) {
@@ -202,14 +206,12 @@ onMounted(() => {
     min-height: calc(100vh - 70px);
     flex-direction: column;
     justify-content: flex-start;
-    padding: var(--space-xl);
-    background: var(--bg-primary);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid var(--border-color);
+    padding: var(--space-4);
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
     opacity: 0;
     visibility: hidden;
-    transition: all var(--transition-normal);
+    transition: all var(--duration-fast) var(--ease-standard);
     z-index: 99;
     overflow-y: auto;
   }
@@ -222,13 +224,13 @@ onMounted(() => {
   .nav-link {
     width: 100%;
     justify-content: center;
-    padding: var(--space-md) var(--space-lg);
-    font-size: 1.1rem;
+    padding: var(--space-3);
+    font-size: 1rem;
   }
 
   .theme-toggle {
     margin-left: 0;
-    margin-top: var(--space-md);
+    margin-top: var(--space-3);
   }
 }
 </style>

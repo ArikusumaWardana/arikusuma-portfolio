@@ -1,6 +1,6 @@
 <template>
   <div class="card skill-card">
-    <div class="skill-icon" :style="{ background: iconBg }">
+    <div class="skill-icon">
       <component :is="icon" :size="28" />
     </div>
     <h3 class="skill-name">{{ name }}</h3>
@@ -34,21 +34,6 @@ const props = defineProps({
 const levelClass = computed(() => {
   return `level-${props.level.toLowerCase()}`
 })
-
-const iconBg = computed(() => {
-  const colors = {
-    primary: 'linear-gradient(135deg, hsl(210, 85%, 55%) 0%, hsl(230, 80%, 60%) 100%)',
-    blue: 'linear-gradient(135deg, hsl(210, 80%, 55%) 0%, hsl(230, 80%, 60%) 100%)',
-    green: 'linear-gradient(135deg, hsl(150, 70%, 45%) 0%, hsl(170, 70%, 50%) 100%)',
-    orange: 'linear-gradient(135deg, hsl(30, 90%, 55%) 0%, hsl(45, 90%, 55%) 100%)',
-    pink: 'linear-gradient(135deg, hsl(330, 80%, 60%) 0%, hsl(350, 80%, 60%) 100%)',
-    purple: 'linear-gradient(135deg, hsl(270, 70%, 55%) 0%, hsl(290, 70%, 60%) 100%)',
-    cyan: 'linear-gradient(135deg, hsl(180, 70%, 45%) 0%, hsl(200, 70%, 50%) 100%)',
-    red: 'linear-gradient(135deg, hsl(0, 70%, 55%) 0%, hsl(20, 70%, 55%) 100%)',
-    teal: 'linear-gradient(135deg, hsl(165, 70%, 45%) 0%, hsl(185, 70%, 50%) 100%)'
-  }
-  return colors[props.color] || colors.primary
-})
 </script>
 
 <style scoped>
@@ -57,48 +42,72 @@ const iconBg = computed(() => {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-md);
-  padding: var(--space-xl);
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
 }
 
 .skill-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
-  border-radius: var(--radius-lg);
-  color: white;
-  box-shadow: var(--shadow-md);
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-accent-text);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.skill-card:hover .skill-icon {
+  background: var(--color-accent-muted);
+  border-color: var(--color-accent);
 }
 
 .skill-name {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--color-text-primary);
 }
 
 .skill-level {
-  font-size: 0.75rem;
+  font-size: 0.725rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: var(--space-xs) var(--space-sm);
+  padding: 4px 10px;
   border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+  color: var(--color-text-secondary);
 }
 
 .level-beginner {
-  background: hsla(40, 90%, 50%, 0.15);
-  color: hsl(35, 80%, 45%);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
 }
 
 .level-intermediate {
-  background: hsla(200, 80%, 50%, 0.15);
-  color: hsl(200, 70%, 45%);
+  border-color: var(--color-accent);
+  background: var(--color-accent-muted);
+  color: var(--color-accent-text);
 }
 
 .level-advanced {
-  background: hsla(140, 70%, 45%, 0.15);
-  color: hsl(140, 60%, 40%);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #0A0A0C;
+  font-weight: 700;
 }
 </style>

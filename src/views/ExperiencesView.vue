@@ -2,7 +2,7 @@
   <div class="page experiences-page">
     <div class="experiences-content animate-fadeIn">
       <div class="page-title">
-        <h2><span class="gradient-text">My Experiences</span></h2>
+        <h2>My <span class="text-accent">Experiences</span></h2>
         <p>My professional journey and work history</p>
       </div>
 
@@ -56,7 +56,6 @@ useHead({
       name: 'keywords',
       content: `work experience, career history, jobs, Unity game developer, PHP web developer, Palm Game Studio, ${seoConfig.displayName}`
     },
-    // Open Graph
     {
       property: 'og:title',
       content: `Experiences | ${seoConfig.displayName}`
@@ -65,7 +64,6 @@ useHead({
       property: 'og:description',
       content: `Explore the career journey, work history, and professional milestones of ${seoConfig.fullName} (${seoConfig.displayName}).`
     },
-    // Twitter Cards
     {
       name: 'twitter:title',
       content: `Experiences | ${seoConfig.displayName}`
@@ -98,7 +96,6 @@ useHead({
 
 const hoveredIndex = ref(null)
 
-// Experiences sorted from newest to oldest (top to bottom)
 const experiences = [
   {
     title: 'Game Programmer',
@@ -149,19 +146,19 @@ const experiences = [
 
 <style scoped>
 .experiences-page {
-  padding-top: calc(70px + var(--space-2xl));
-  padding-bottom: var(--space-3xl);
+  padding-top: calc(70px + var(--space-4));
+  padding-bottom: var(--space-5);
 }
 
 .experiences-content {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 var(--space-4);
 }
 
 .timeline {
   position: relative;
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-5);
   padding-left: 30px;
 }
 
@@ -172,15 +169,12 @@ const experiences = [
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-full);
+  background: var(--color-border);
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: var(--space-xl);
-  animation: fadeIn 0.5s ease forwards;
-  opacity: 0;
+  margin-bottom: var(--space-4);
 }
 
 .timeline-item:last-child {
@@ -190,7 +184,7 @@ const experiences = [
 .timeline-marker {
   position: absolute;
   left: -30px;
-  top: var(--space-lg);
+  top: var(--space-4);
   width: 18px;
   height: 18px;
   display: flex;
@@ -199,78 +193,84 @@ const experiences = [
 }
 
 .marker-dot {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: var(--gradient-primary);
-  box-shadow: 0 0 0 4px var(--bg-primary), 0 0 20px hsla(var(--primary-hue), 80%, 55%, 0.4);
-  transition: transform var(--transition-normal);
+  background: var(--color-surface);
+  border: 2px solid var(--color-accent);
+  transition: transform var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
 }
 
 .timeline-item:hover .marker-dot {
-  transform: scale(1.3);
+  transform: scale(1.25);
+  background: var(--color-accent);
 }
 
 .timeline-content {
-  padding: var(--space-lg);
-  transition: all var(--transition-normal);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-base) var(--ease-standard);
 }
 
 .timeline-item:hover .timeline-content {
-  border-color: var(--primary);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 .timeline-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--space-md);
-  margin-bottom: var(--space-sm);
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
   flex-wrap: wrap;
 }
 
 .timeline-title {
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--color-text-primary);
 }
 
 .timeline-date {
-  font-size: 0.8rem;
+  font-size: 0.775rem;
   font-weight: 600;
-  padding: var(--space-xs) var(--space-sm);
-  background: var(--gradient-primary);
-  color: white;
-  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
   white-space: nowrap;
 }
 
 .timeline-org {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-2);
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
 .timeline-org svg {
-  color: var(--primary);
+  color: var(--color-accent);
 }
 
 .timeline-details {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: all var(--duration-base) var(--ease-standard);
 }
 
 .timeline-item:hover .timeline-details {
-  max-height: 200px;
+  max-height: 300px;
   opacity: 1;
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--border-color);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
 }
 
 .timeline-details ul {
@@ -279,14 +279,14 @@ const experiences = [
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-2);
 }
 
 .timeline-details li {
   position: relative;
-  padding-left: var(--space-lg);
+  padding-left: var(--space-4);
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--color-text-secondary);
   line-height: 1.5;
 }
 
@@ -294,7 +294,7 @@ const experiences = [
   content: '▹';
   position: absolute;
   left: 0;
-  color: var(--primary);
+  color: var(--color-accent);
   font-weight: bold;
 }
 
@@ -309,7 +309,7 @@ const experiences = [
 
   .timeline-header {
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-2);
   }
 
   .timeline-date {

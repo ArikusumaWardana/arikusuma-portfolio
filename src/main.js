@@ -10,9 +10,17 @@ export const createApp = ViteSSG(
     routerOptions: {
       scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
-          return savedPosition
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(savedPosition)
+            }, 300)
+          })
         } else {
-          return { top: 0 }
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve({ top: 0, behavior: 'smooth' })
+            }, 300)
+          })
         }
       }
     }

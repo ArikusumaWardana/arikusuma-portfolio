@@ -1,0 +1,132 @@
+/* ============================================
+   Design Tokens - Solid Anti-Slop System
+   ============================================ */
+
+:root {
+  /* Default (Dark Theme) */
+  --color-bg: #0B0C0E;
+  --color-surface: #121418;
+  --color-surface-raised: #1A1D24;
+  --color-border: #262932;
+  --grid-line-color: rgba(255, 255, 255, 0.04);
+
+  /* Text */
+  --color-text-primary: #F3F4F6;
+  --color-text-secondary: #9CA3AF;
+  --color-text-tertiary: #6B7280;
+
+  /* Accent — Single Teal Accent */
+  --color-accent: #00D9A3;
+  --color-accent-hover: #00F0B5;
+  --color-accent-muted: rgba(0, 217, 163, 0.12);
+  --color-accent-text: #00D9A3;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+
+  /* Spacing Scale (8pt grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Legacy Mappings to ensure smooth migration */
+  --primary: var(--color-accent);
+  --primary-light: var(--color-accent-hover);
+  --primary-dark: #00B386;
+  --accent: var(--color-accent);
+  --accent-light: var(--color-accent-hover);
+
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--color-surface);
+  --bg-card: var(--color-surface-raised);
+  --bg-glass: rgba(18, 20, 24, 0.85);
+
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-tertiary);
+
+  --border-color: var(--color-border);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: none;
+
+  --transition-fast: var(--duration-fast) var(--ease-standard);
+  --transition-normal: var(--duration-base) var(--ease-standard);
+  --transition-slow: 400ms var(--ease-standard);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Outfit', var(--font-sans);
+
+  --z-background: -1;
+  --z-content: 1;
+  --z-navbar: 100;
+  --z-modal: 200;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0B0C0E;
+  --color-surface: #121418;
+  --color-surface-raised: #1A1D24;
+  --color-border: #262932;
+  --grid-line-color: rgba(255, 255, 255, 0.08);
+
+  --color-text-primary: #F3F4F6;
+  --color-text-secondary: #9CA3AF;
+  --color-text-tertiary: #6B7280;
+
+  --color-accent: #00D9A3;
+  --color-accent-hover: #00F0B5;
+  --color-accent-muted: rgba(0, 217, 163, 0.12);
+  --color-accent-text: #00D9A3;
+
+  --bg-glass: rgba(18, 20, 24, 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] {
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #F1F5F9;
+  --color-border: #E2E8F0;
+  --grid-line-color: rgba(0, 0, 0, 0.09);
+
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748B;
+
+  --color-accent: #00B88A;
+  --color-accent-hover: #009973;
+  --color-accent-muted: rgba(0, 184, 138, 0.10);
+  --color-accent-text: #008763;
+
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+}

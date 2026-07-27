@@ -2,7 +2,7 @@
   <div class="page projects-page">
     <div class="projects-content animate-fadeIn">
       <div class="page-title">
-        <h2><span class="gradient-text">My Projects</span></h2>
+        <h2>My <span class="text-accent">Projects</span></h2>
         <p>Some of my recent work and side projects</p>
       </div>
 
@@ -345,35 +345,32 @@ function setPage(page) {
 }
 
 .filter-btn {
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border-color);
-  background: var(--bg-card);
-  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   cursor: pointer;
-  transition: all var(--transition-normal);
-  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .filter-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--primary-light);
+  color: var(--color-text-primary);
+  border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
 }
 
 .filter-btn.active {
-  background: var(--gradient-primary);
-  border-color: transparent;
-  color: white;
-  box-shadow: var(--shadow-glow);
+  background: var(--color-accent-muted);
+  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+  font-weight: 600;
 }
 
 .filter-btn.active:hover {
-  box-shadow: var(--shadow-glow), var(--shadow-md);
   transform: translateY(-2px);
 }
 
@@ -382,60 +379,56 @@ function setPage(page) {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--space-md);
-  margin-top: var(--space-3xl);
-  animation: fadeIn var(--transition-slow) ease both;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  animation: fadeIn var(--duration-base) var(--ease-standard) both;
   animation-delay: 0.2s;
 }
 
 .pagination-numbers {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-1);
 }
 
 .pagination-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border-color);
-  background: var(--bg-card);
-  color: var(--text-secondary);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all var(--duration-fast) var(--ease-standard);
   padding: 0;
-  box-shadow: var(--shadow-sm);
 }
 
 .pagination-btn:hover:not(:disabled) {
-  color: var(--text-primary);
-  border-color: var(--primary-light);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
 }
 
 .pagination-btn.active {
-  background: var(--gradient-primary);
-  border-color: transparent;
-  color: white;
-  box-shadow: var(--shadow-glow);
+  background: var(--color-accent-muted);
+  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+  font-weight: 600;
 }
 
 .pagination-btn.active:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow), var(--shadow-md);
 }
 
 .pagination-btn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
 }
 
 @media (max-width: 1024px) {

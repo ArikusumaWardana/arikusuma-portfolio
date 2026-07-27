@@ -2,7 +2,7 @@
   <div class="page tools-page">
     <div class="tools-content animate-fadeIn">
       <div class="page-title">
-        <h2><span class="gradient-text">My Tools</span></h2>
+        <h2>My <span class="text-accent">Tools</span></h2>
         <p>Software and platforms I use daily</p>
       </div>
 
@@ -14,7 +14,7 @@
           :description="tool.description"
           :icon="tool.icon"
           :iconUrl="tool.iconUrl"
-          :class="`delay-${(index + 1) * 100}`"
+          :class="`delay-${((index % 5) + 1) * 100}`"
           class="animate-fadeIn"
         />
       </div>
@@ -49,7 +49,6 @@ useHead({
       name: 'keywords',
       content: `developer tools, VS Code, Laragon, Unity, GitHub, Supabase, PHPStorm, toolset, developer environment, ${seoConfig.displayName}`
     },
-    // Open Graph
     {
       property: 'og:title',
       content: `Tools | ${seoConfig.displayName}`
@@ -58,7 +57,6 @@ useHead({
       property: 'og:description',
       content: `Explore the developer tools, software environments, and platforms used daily by ${seoConfig.fullName} (${seoConfig.displayName}).`
     },
-    // Twitter Cards
     {
       name: 'twitter:title',
       content: `Tools | ${seoConfig.displayName}`
@@ -145,18 +143,18 @@ const tools = [
 
 <style scoped>
 .tools-page {
-  padding-top: calc(70px + var(--space-2xl));
-  padding-bottom: var(--space-3xl);
+  padding-top: calc(70px + var(--space-4));
+  padding-bottom: var(--space-5);
 }
 
 .tools-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 var(--space-4);
 }
 
 .tools-grid {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-4);
 }
 
 @media (max-width: 1024px) {

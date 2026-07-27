@@ -2,7 +2,7 @@
   <div class="page volunteers-page">
     <div class="volunteers-content animate-fadeIn">
       <div class="page-title">
-        <h2><span class="gradient-text">Volunteer Activities</span></h2>
+        <h2>Volunteer <span class="text-accent">Activities</span></h2>
         <p>Giving back to the community and participating in social and tech initiatives</p>
       </div>
 
@@ -265,46 +265,47 @@ const volunteers = [
 .volunteer-date {
   font-size: 0.75rem;
   font-weight: 600;
-  padding: var(--space-xs) var(--space-sm);
-  background: var(--gradient-primary);
-  color: white;
-  border-radius: var(--radius-full);
+  padding: 4px 8px;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
   white-space: nowrap;
 }
 
 .volunteer-org {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-1);
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--color-text-secondary);
   margin-top: -2px;
 }
 
 .volunteer-org svg {
-  color: var(--primary);
+  color: var(--color-accent);
 }
 
 .volunteer-desc {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--color-text-secondary);
   line-height: 1.6;
 }
 
 .volunteer-highlights {
-  margin-top: var(--space-xs);
+  margin-top: var(--space-1);
   padding-left: 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-1);
 }
 
 .volunteer-highlights li {
   position: relative;
-  padding-left: var(--space-md);
+  padding-left: var(--space-3);
   font-size: 0.85rem;
-  color: var(--text-secondary);
+  color: var(--color-text-secondary);
   line-height: 1.4;
 }
 
@@ -312,16 +313,16 @@ const volunteers = [
   content: '▹';
   position: absolute;
   left: 0;
-  color: var(--primary);
+  color: var(--color-accent);
   font-weight: bold;
 }
 
 .volunteer-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs);
-  margin-top: auto; /* Push tags to the bottom of the card */
-  padding-top: var(--space-sm);
+  gap: var(--space-1);
+  margin-top: auto;
+  padding-top: var(--space-2);
 }
 
 .tag-badge {
@@ -329,18 +330,18 @@ const volunteers = [
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: var(--space-xs) var(--space-sm);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
+  padding: 2px 8px;
+  background: var(--color-surface-raised);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .volunteer-card:hover .tag-badge {
-  border-color: var(--primary-light);
-  color: var(--primary-light);
-  background: var(--bg-card);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-surface);
 }
 
 @media (max-width: 1024px) {

@@ -1,22 +1,22 @@
 <template>
-  <footer class="footer glass">
+  <footer class="footer">
     <div class="footer-container">
       <div class="footer-content">
         <div class="footer-brand">
-          <img src="/logo.svg" alt="Arikusuma Wardana Logo" loading="lazy" class="brand-logo" />
+          <img src="/logo.svg?v=2" alt="Arikusuma Wardana Logo" loading="lazy" class="brand-logo" />
           <span>Portfolio</span>
         </div>
         <p class="footer-tagline">Crafting digital experiences with passion and precision.</p>
       </div>
 
       <div class="footer-social">
-        <a href="https://instagram.com/arikusuma.05" target="_blank" rel="noopener" class="social-link">
+        <a href="https://instagram.com/arikusuma.05" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
           <Instagram :size="20" />
         </a>
-        <a href="https://github.com/ArikusumaWardana" target="_blank" rel="noopener" class="social-link">
+        <a href="https://github.com/ArikusumaWardana" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
           <Github :size="20" />
         </a>
-        <a href="https://www.linkedin.com/in/arikusuma-wardana/" target="_blank" rel="noopener" class="social-link">
+        <a href="https://www.linkedin.com/in/arikusuma-wardana/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
           <Linkedin :size="20" />
         </a>
       </div>
@@ -38,18 +38,19 @@ const currentYear = computed(() => new Date().getFullYear())
 <style scoped>
 .footer {
   margin-top: auto;
-  padding: var(--space-xl) 0;
-  border-top: 1px solid var(--border-color);
+  padding: var(--space-5) 0 var(--space-4);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 var(--space-4);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-4);
 }
 
 .footer-content {
@@ -59,76 +60,65 @@ const currentYear = computed(() => new Date().getFullYear())
 .footer-brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-2);
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
 }
 
 .brand-logo {
   width: 28px;
   height: 28px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
 }
 
 .footer-tagline {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--color-text-tertiary);
 }
 
 .footer-social {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-3);
 }
 
 .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-full);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  transition: all var(--transition-normal);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .social-link:hover {
-  background: var(--gradient-primary);
-  color: white;
-  border-color: transparent;
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-glow);
+  background: var(--color-surface);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 .footer-bottom {
   text-align: center;
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
   width: 100%;
 }
 
 .footer-bottom p {
   font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.heart {
-  color: #e74c3c;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+  color: var(--color-text-tertiary);
 }
 
 @media (max-width: 768px) {
   .footer-container {
-    gap: var(--space-md);
+    gap: var(--space-3);
   }
 }
 </style>
