@@ -54,11 +54,11 @@
                 link="mailto:arikusumawardana09@gmail.com"
                 :icon="Mail"
               />
-              <SocialIcon
+              <!-- <SocialIcon
                 name="WhatsApp"
                 link="https://wa.me/6285339307788"
                 :icon="MessageCircle"
-              />
+              /> -->
             </div>
           </div>
 

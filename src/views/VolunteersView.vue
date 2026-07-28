@@ -224,7 +224,46 @@ const volunteers = [
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  position: relative;
+  transition: transform var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard);
   animation: cardFloat 6s ease-in-out infinite, borderPulse 4s ease-in-out infinite;
+}
+
+.volunteer-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: skewX(-25deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.volunteer-card:hover {
+  transform: translate3d(0, -4px, 0) !important;
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 24px -8px var(--color-accent-muted);
+}
+
+.volunteer-card:hover::after {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 250%;
+  }
 }
 
 @keyframes borderPulse {

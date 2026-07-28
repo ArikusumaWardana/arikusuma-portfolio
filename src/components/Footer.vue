@@ -22,9 +22,9 @@
         <a href="mailto:arikusumawardana09@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Email">
           <Mail :size="20" />
         </a>
-        <a href="https://wa.me/6285339307788" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp">
+        <!-- <a href="https://wa.me/6285339307788" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp">
           <MessageCircle :size="20" />
-        </a>
+        </a> -->
       </div>
 
       <div class="footer-bottom">

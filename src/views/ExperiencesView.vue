@@ -276,11 +276,43 @@ const experiences = [
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   position: relative;
+  overflow: hidden;
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   animation: cardFloat 6s ease-in-out infinite, borderPulse 4s ease-in-out infinite;
+}
+
+.timeline-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: skewX(-25deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.timeline-card:hover::after {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 250%;
+  }
 }
 
 @keyframes cardFloat {

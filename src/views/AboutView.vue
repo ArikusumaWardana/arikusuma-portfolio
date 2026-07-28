@@ -20,7 +20,7 @@
             <h3 class="hero-name">Kadek Agus Arikusuma Wardana</h3>
             <div class="hero-badges">
               <span class="status-badge">
-                <span class="status-dot"></span> Available for Work
+                <span class="status-dot"></span> Available for Work & Project
               </span>
               <span class="location-tag">
                 <MapPin :size="13" class="location-icon" /> Denpasar, Bali
@@ -34,7 +34,7 @@
         <!-- Bio Body -->
         <div class="about-body">
           <h2 class="about-greeting">
-            Hello, I'm <span class="text-accent">Arikusuma</span> 👋
+            Hello, I'm <span class="text-accent">Arikusuma</span> 
           </h2>
 
           <p class="about-text">
