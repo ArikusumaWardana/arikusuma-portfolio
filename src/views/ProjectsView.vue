@@ -320,6 +320,7 @@ function setPage(page) {
 .projects-page {
   padding-top: calc(70px + var(--space-2xl));
   padding-bottom: var(--space-3xl);
+  justify-content: flex-start;
 }
 
 .projects-content {

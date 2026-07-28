@@ -42,7 +42,44 @@ defineProps({
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   transition: transform var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard);
+  animation: cardFloat 6s ease-in-out infinite, borderPulse 4s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% {
+    border-color: var(--color-border);
+  }
+  50% {
+    border-color: rgba(0, 217, 163, 0.25);
+  }
+}
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+.tool-card:nth-child(2n) {
+  animation-duration: 5.5s;
+  animation-delay: -1.5s;
+}
+
+.tool-card:nth-child(3n) {
+  animation-duration: 6.5s;
+  animation-delay: -3s;
+}
+
+.tool-card:nth-child(4n) {
+  animation-duration: 7s;
+  animation-delay: -4.5s;
 }
 
 .tool-card:hover {

@@ -83,15 +83,41 @@ function renderFrame() {
   // Render base static background
   drawStatic()
 
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim() || '#00D9A3'
+  const time = Date.now() * 0.001
+
+  // Ambient automatic pulsing grid intersections
+  const ambientNodes = [
+    { x: (Math.sin(time * 0.3) * 0.35 + 0.3) * w, y: (Math.cos(time * 0.2) * 0.35 + 0.4) * h, r: 120 },
+    { x: (Math.cos(time * 0.25) * 0.35 + 0.7) * w, y: (Math.sin(time * 0.35) * 0.35 + 0.6) * h, r: 140 },
+    { x: (Math.sin(time * 0.4) * 0.25 + 0.5) * w, y: (Math.sin(time * 0.15) * 0.25 + 0.2) * h, r: 100 }
+  ]
+
+  ctx.fillStyle = accent
+  ambientNodes.forEach(node => {
+    const startX = Math.max(0, Math.floor((node.x - node.r) / GRID_SIZE) * GRID_SIZE)
+    const endX = Math.min(w, Math.ceil((node.x + node.r) / GRID_SIZE) * GRID_SIZE)
+    const startY = Math.max(0, Math.floor((node.y - node.r) / GRID_SIZE) * GRID_SIZE)
+    const endY = Math.min(h, Math.ceil((node.y + node.r) / GRID_SIZE) * GRID_SIZE)
+
+    for (let x = startX; x <= endX; x += GRID_SIZE) {
+      for (let y = startY; y <= endY; y += GRID_SIZE) {
+        const dist = Math.hypot(x - node.x, y - node.y)
+        if (dist < node.r) {
+          const opacity = (1 - dist / node.r) * 0.06
+          ctx.globalAlpha = opacity
+          ctx.fillRect(x - 2, y - 2, 4, 4)
+        }
+      }
+    }
+  })
+
   // Draw interactive node highlights
   if (mouse.x > -100 && mouse.y > -100) {
-    const accent = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim() || '#00D9A3'
     const startX = Math.max(0, Math.floor((mouse.x - RADIUS) / GRID_SIZE) * GRID_SIZE)
     const endX = Math.min(w, Math.ceil((mouse.x + RADIUS) / GRID_SIZE) * GRID_SIZE)
     const startY = Math.max(0, Math.floor((mouse.y - RADIUS) / GRID_SIZE) * GRID_SIZE)
     const endY = Math.min(h, Math.ceil((mouse.y + RADIUS) / GRID_SIZE) * GRID_SIZE)
-
-    ctx.fillStyle = accent
 
     for (let x = startX; x <= endX; x += GRID_SIZE) {
       for (let y = startY; y <= endY; y += GRID_SIZE) {
@@ -99,13 +125,12 @@ function renderFrame() {
         if (dist < RADIUS) {
           const stepOpacity = dist < RADIUS * 0.33 ? 0.4 : dist < RADIUS * 0.66 ? 0.2 : 0.05
           ctx.globalAlpha = stepOpacity
-          // Draw solid discrete square highlight node at grid intersection
           ctx.fillRect(x - 2, y - 2, 4, 4)
         }
       }
     }
-    ctx.globalAlpha = 1
   }
+  ctx.globalAlpha = 1
 
   animationFrameId = requestAnimationFrame(renderFrame)
 }

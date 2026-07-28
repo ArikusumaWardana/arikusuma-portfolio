@@ -6,12 +6,31 @@
         <span class="brand-text">Arikusuma<span class="text-accent">.</span></span>
       </router-link>
 
-      <button class="hamburger" :class="{ active: isMenuOpen }" @click="toggleMenu" aria-label="Toggle Navigation Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- Right Actions Bar for Mobile (Theme Toggle + Hamburger) -->
+      <div class="mobile-actions">
+        <button
+          class="theme-toggle icon-btn header-theme-toggle"
+          @click="toggleTheme"
+          :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+          aria-label="Toggle Theme"
+        >
+          <Moon v-if="!isDark" :size="18" />
+          <Sun v-else :size="18" />
+        </button>
 
+        <button
+          class="hamburger"
+          :class="{ active: isMenuOpen }"
+          @click="toggleMenu"
+          aria-label="Toggle Navigation Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Navigation Drawer / Menu -->
       <div class="navbar-menu" :class="{ active: isMenuOpen }">
         <router-link
           v-for="link in navLinks"
@@ -25,7 +44,20 @@
           <span>{{ link.name }}</span>
         </router-link>
 
-        <button class="theme-toggle icon-btn" @click="toggleTheme" :title="isDark ? 'Light Mode' : 'Dark Mode'">
+        <!-- Full-width Theme Switcher Item inside Mobile Drawer -->
+        <button class="nav-link mobile-theme-item" @click="toggleTheme">
+          <Moon v-if="!isDark" :size="18" />
+          <Sun v-else :size="18" />
+          <span>Switch to {{ isDark ? 'Light' : 'Dark' }} Mode</span>
+        </button>
+
+        <!-- Desktop Theme Toggle -->
+        <button
+          class="theme-toggle icon-btn desktop-theme-toggle"
+          @click="toggleTheme"
+          :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+          aria-label="Toggle Theme"
+        >
           <Moon v-if="!isDark" :size="20" />
           <Sun v-else :size="20" />
         </button>
@@ -120,6 +152,12 @@ onMounted(() => {
   height: 38px;
 }
 
+.mobile-actions {
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+}
+
 .navbar-menu {
   display: flex;
   align-items: center;
@@ -137,6 +175,8 @@ onMounted(() => {
   font-size: 0.875rem;
   transition: all var(--duration-fast) var(--ease-standard);
   border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
 }
 
 .nav-link:hover {
@@ -152,8 +192,12 @@ onMounted(() => {
   font-weight: 600;
 }
 
-.theme-toggle {
+.desktop-theme-toggle {
   margin-left: var(--space-2);
+}
+
+.mobile-theme-item {
+  display: none;
 }
 
 .hamburger {
@@ -190,10 +234,36 @@ onMounted(() => {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* Mobile Responsive (< 768px) */
 @media (max-width: 768px) {
+  .mobile-actions {
+    display: flex;
+  }
+
+  .header-theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
   .hamburger {
     display: flex;
     z-index: 10;
+  }
+
+  .desktop-theme-toggle {
+    display: none;
+  }
+
+  .mobile-theme-item {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--space-2);
+    padding: var(--space-3);
+    font-size: 0.95rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-raised);
+    color: var(--color-accent-text);
   }
 
   .navbar-menu {
@@ -214,6 +284,7 @@ onMounted(() => {
     transition: all var(--duration-fast) var(--ease-standard);
     z-index: 99;
     overflow-y: auto;
+    gap: var(--space-2);
   }
 
   .navbar-menu.active {
@@ -226,11 +297,6 @@ onMounted(() => {
     justify-content: center;
     padding: var(--space-3);
     font-size: 1rem;
-  }
-
-  .theme-toggle {
-    margin-left: 0;
-    margin-top: var(--space-3);
   }
 }
 </style>

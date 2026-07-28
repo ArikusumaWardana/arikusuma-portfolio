@@ -200,6 +200,7 @@ useHead({
   padding-top: calc(70px + var(--space-5));
   padding-bottom: var(--space-6);
   width: 100%;
+  min-height: 100vh;
 }
 
 .home-container {
@@ -325,6 +326,19 @@ useHead({
   padding: 8px;
   background: var(--color-surface);
   box-shadow: var(--shadow-lg);
+  animation: floatProfile 6s ease-in-out infinite;
+}
+
+@keyframes floatProfile {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .profile-img {
@@ -349,6 +363,19 @@ useHead({
   color: var(--color-text-primary);
   box-shadow: var(--shadow-md);
   white-space: nowrap;
+  animation: floatTag 4s ease-in-out infinite;
+}
+
+@keyframes floatTag {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .floating-tag .tag-icon {
@@ -363,6 +390,7 @@ useHead({
 .tag-bottom {
   bottom: 10px;
   left: -20px;
+  animation-delay: -2s;
 }
 
 /* Stats Section */
@@ -403,25 +431,89 @@ useHead({
 
 /* Responsive */
 @media (max-width: 768px) {
+  .home-page {
+    padding-top: calc(70px + var(--space-3));
+    padding-bottom: var(--space-4);
+  }
+
+  .home-container {
+    gap: var(--space-4);
+    padding: 0 var(--space-3);
+  }
+
   .hero-container {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: var(--space-5);
   }
 
   .hero-content {
     align-items: center;
+    text-align: center;
+  }
+
+  .role-badges {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-quote {
+    text-align: center;
+    margin: 0 auto;
   }
 
   .hero-actions {
     justify-content: center;
+    width: 100%;
+  }
+
+  .social-links {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-visual {
+    margin-top: var(--space-3);
+  }
+
+  .profile-frame {
+    width: 200px;
+    height: 200px;
   }
 
   .tag-top {
-    right: 0;
+    top: -10px;
+    right: -10px;
   }
 
   .tag-bottom {
-    left: 0;
+    bottom: -10px;
+    left: -10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-name {
+    font-size: 2.2rem;
+  }
+
+  .role-badge {
+    font-size: 0.775rem;
+    padding: 4px 10px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .floating-tag {
+    font-size: 0.725rem;
+    padding: 4px 10px;
   }
 }
 </style>
