@@ -271,6 +271,13 @@ const projects = [
     image: '/projects/ecochain.webp',
     githubUrl: 'https://github.com/ArikusumaWardana/EcoChain-website',
     category: 'Website'
+  }, 
+  {
+    name: 'SIGAP Website',
+    description: "SIGAP is a web platform that tracks the distribution of social assistance and public funds (bansos, CSR, village funds, scholarships) from the source to the end recipient, with every critical point recorded immutably on the blockchain. This platform is not just a reporting dashboard, but a multi-layered verification system involving the recipient community as digital witnesses, ensuring that the data displayed publicly is truly accountable and not just claimed.",
+    techStack: ['Next.JS', 'Supabase', 'Blockchain'],
+    image: "/projects/sigap.webp",
+    category: 'Website'
   }
 ]
 
