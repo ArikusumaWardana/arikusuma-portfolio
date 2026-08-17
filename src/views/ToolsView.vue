@@ -27,6 +27,7 @@ import {
     Box,
     Braces,
     Code2,
+    Container,
     Database,
     Gamepad2,
     GitBranch,
@@ -137,6 +138,11 @@ const tools = [
     name: 'Draw.io',
     description: 'Diagram and flowchart maker',
     icon: PenTool
+  },
+  {
+    name: 'Docker',
+    description: 'Containerization platform',
+    icon: Container
   }
 ]
 </script>

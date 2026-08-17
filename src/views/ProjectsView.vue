@@ -278,6 +278,15 @@ const projects = [
     techStack: ['Next.JS', 'Supabase', 'Blockchain'],
     image: "/projects/sigap.webp",
     category: 'Website'
+  },
+  {
+    name: 'Verso',
+    description: 'Verso is a personal archive for storing web articles and PDF papers. Articles are formatted for easy reading, PDFs are stored alongside the extracted text, and the entire collection is searchable via a PostgreSQL full-text search.',
+    techStack: ['Next.JS', 'Supabase', 'PostgreSQL', 'PDF-parse', 'JSDOM'],
+    image: '/projects/verso.webp',
+    githubUrl: 'https://github.com/ArikusumaWardana/verso-arsip',
+    websiteUrl: 'https://verso-arsip.vercel.app/',
+    category: 'Website'
   }
 ]
 
