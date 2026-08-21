@@ -287,6 +287,15 @@ const projects = [
     githubUrl: 'https://github.com/ArikusumaWardana/verso-arsip',
     websiteUrl: 'https://verso-arsip.vercel.app/',
     category: 'Website'
+  },
+  {
+    name: 'Orbita', 
+    description: 'Orbita is an all-in-one personal productivity & financial intelligence workspace. It seamlessly unifies daily task management, event scheduling, multi-wallet cash flow tracking, and a context-aware AI assistant inside a modern interface.',
+    techStack: ['Next.JS', 'Neon DB', 'Framer Motion', 'Gemini 3.6 Flash'],
+    image: '/projects/orbita.webp',
+    githubUrl: 'https://github.com/ArikusumaWardana/orbita',
+    websiteUrl: 'https://orbita-memo.vercel.app/',
+    category: 'Website'
   }
 ]
 

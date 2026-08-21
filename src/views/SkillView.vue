@@ -96,6 +96,7 @@ const skills = [
   { name: 'PHP', level: 'Beginner', icon: FileCode, color: 'teal' },
   { name: 'C#', level: 'Intermediate', icon: Cpu, color: 'teal' },
   { name: 'SQL', level: 'Intermediate', icon: Database, color: 'teal' },
+  { name: 'PostgreSQL', level: 'Beginner', icon: Database, color: 'teal' },
   { name: 'Laravel', level: 'Beginner', icon: Layers, color: 'teal' },
   { name: 'Vue.js', level: 'Beginner', icon: Boxes, color: 'teal' },
   { name: 'Next.js', level: 'Intermediate', icon: Code, color: 'teal' },
