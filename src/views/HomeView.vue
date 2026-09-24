@@ -69,7 +69,7 @@
               </div>
               <div class="floating-tag tag-top">
                 <Sparkles :size="16" class="tag-icon" />
-                <span>Vue.js & Unity</span>
+                <span>Next.js & Unity</span>
               </div>
               <div class="floating-tag tag-bottom">
                 <Briefcase :size="16" class="tag-icon" />

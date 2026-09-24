@@ -11,7 +11,6 @@
           v-for="(skill, index) in skills"
           :key="skill.name"
           :name="skill.name"
-          :level="skill.level"
           :icon="skill.icon"
           :color="skill.color"
           :class="`delay-${((index % 5) + 1) * 100}`"
@@ -89,21 +88,21 @@ useHead({
 })
 
 const skills = [
-  { name: 'HTML', level: 'Intermediate', icon: Globe, color: 'teal' },
-  { name: 'CSS', level: 'Intermediate', icon: Palette, color: 'teal' },
-  { name: 'JavaScript', level: 'Beginner', icon: Braces, color: 'teal' },
-  { name: 'TypeScript', level: 'Beginner', icon: Code, color: 'teal' },
-  { name: 'PHP', level: 'Beginner', icon: FileCode, color: 'teal' },
-  { name: 'C#', level: 'Intermediate', icon: Cpu, color: 'teal' },
-  { name: 'SQL', level: 'Intermediate', icon: Database, color: 'teal' },
-  { name: 'PostgreSQL', level: 'Beginner', icon: Database, color: 'teal' },
-  { name: 'Laravel', level: 'Beginner', icon: Layers, color: 'teal' },
-  { name: 'Vue.js', level: 'Beginner', icon: Boxes, color: 'teal' },
-  { name: 'Next.js', level: 'Intermediate', icon: Code, color: 'teal' },
-  { name: 'Tailwind CSS', level: 'Intermediate', icon: Palette, color: 'teal' },
-  { name: 'Bootstrap', level: 'Beginner', icon: Layers, color: 'teal' },
-  { name: 'Prisma', level: 'Beginner', icon: Database, color: 'teal' },
-  { name: 'Git', level: 'Beginner', icon: Terminal, color: 'teal' }
+  { name: 'HTML', icon: Globe, color: 'teal' },
+  { name: 'CSS', icon: Palette, color: 'teal' },
+  { name: 'JavaScript', icon: Braces, color: 'teal' },
+  { name: 'TypeScript', icon: Code, color: 'teal' },
+  { name: 'PHP', icon: FileCode, color: 'teal' },
+  { name: 'C#', icon: Cpu, color: 'teal' },
+  { name: 'SQL', icon: Database, color: 'teal' },
+  { name: 'PostgreSQL', icon: Database, color: 'teal' },
+  { name: 'Laravel', icon: Layers, color: 'teal' },
+  { name: 'Vue.js', icon: Boxes, color: 'teal' },
+  { name: 'Next.js', icon: Code, color: 'teal' },
+  { name: 'Tailwind CSS', icon: Palette, color: 'teal' },
+  { name: 'Bootstrap', icon: Layers, color: 'teal' },
+  { name: 'Prisma', icon: Database, color: 'teal' },
+  { name: 'Git', icon: Terminal, color: 'teal' }
 ]
 </script>
 
