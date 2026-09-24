@@ -223,7 +223,7 @@ const projects = [
     category: 'Game'
   },
   {
-    name: 'Animatronics Afterhouse',
+    name: 'Animatronics Afterhours',
     description: 'A horror game project inspired by Five Nights at Freddy\'s 2, featuring immersive gameplay using real-life photo and video assets.',
     image: '/projects/animatronics afterhouse.webp',
     techStack: ['Unity', 'C#', 'Plastic CSM'],
@@ -257,8 +257,8 @@ const projects = [
     category: 'Website'
   },
   {
-    name: 'Paw Splash',
-    description: 'Step into the paws of an orange cat and survive an all-out water balloon battle against mischievous rival cats in this auto-deflection survival game. Developed for Gameseed 2026.',
+    name: 'Paw Tennis',
+    description: 'Paw Tennis brings tennis and roguelike progression together. Face your opponents on the court, keep the ball in play, and choose a power-up card every wave.',
     techStack: ['Unity', 'C#'],
     image: '/projects/paw-splash.webp',
     websiteUrl: 'https://palm-gamestudio.itch.io/pawsplash',
