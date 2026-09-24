@@ -13,8 +13,21 @@
           class="card volunteer-card animate-fadeIn"
           :class="`delay-${(index + 1) * 100}`"
         >
-          <div class="volunteer-image">
+          <div
+            class="volunteer-image"
+            @click="openModal(item)"
+            role="button"
+            tabindex="0"
+            :aria-label="`View details for ${item.title}`"
+            @keydown.enter="openModal(item)"
+          >
             <img :src="item.image" :alt="item.title" loading="lazy" />
+            <div class="image-overlay">
+              <span class="overlay-badge">
+                <Eye :size="15" />
+                <span>Details</span>
+              </span>
+            </div>
           </div>
           <div class="volunteer-card-content">
             <div class="volunteer-header">
@@ -25,28 +38,148 @@
               <HeartHandshake :size="16" />
               <span>{{ item.organization }}</span>
             </div>
-            <p class="volunteer-desc">{{ item.description }}</p>
-            
-            <ul class="volunteer-highlights" v-if="item.highlights && item.highlights.length">
-              <li v-for="hl in item.highlights" :key="hl">{{ hl }}</li>
-            </ul>
 
-            <div class="volunteer-tags" v-if="item.tags && item.tags.length">
-              <span v-for="tag in item.tags" :key="tag" class="tag-badge">
-                {{ tag }}
-              </span>
+            <div class="volunteer-footer">
+              <div class="volunteer-tags" v-if="item.tags && item.tags.length">
+                <span v-for="tag in item.tags" :key="tag" class="tag-badge">
+                  {{ tag }}
+                </span>
+              </div>
+
+              <button
+                type="button"
+                class="detail-icon-btn"
+                @click="openModal(item)"
+                aria-label="View volunteer details"
+                title="View details"
+              >
+                <Eye :size="18" />
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Volunteer Detail Modal -->
+    <Teleport to="body">
+      <transition name="modal-fade">
+        <div
+          v-if="selectedVolunteer"
+          class="modal-backdrop"
+          @click.self="closeModal"
+          role="dialog"
+          aria-modal="true"
+          :aria-label="selectedVolunteer.title"
+        >
+          <div class="modal-card">
+            <!-- Modal Media Header -->
+            <div class="modal-media">
+              <img
+                :src="selectedVolunteer.image"
+                :alt="selectedVolunteer.title"
+                class="modal-img"
+              />
+              <div class="modal-media-overlay"></div>
+              <button
+                type="button"
+                class="modal-close-btn"
+                @click="closeModal"
+                aria-label="Close modal"
+              >
+                <X :size="20" />
+              </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="modal-content">
+              <div class="modal-meta">
+                <div class="modal-org">
+                  <HeartHandshake :size="16" />
+                  <span>{{ selectedVolunteer.organization }}</span>
+                </div>
+                <span class="modal-date">{{ selectedVolunteer.date }}</span>
+              </div>
+
+              <h3 class="modal-title">{{ selectedVolunteer.title }}</h3>
+
+              <!-- Description -->
+              <div class="modal-section" v-if="selectedVolunteer.description">
+                <h4 class="section-heading">Overview</h4>
+                <p class="modal-desc">{{ selectedVolunteer.description }}</p>
+              </div>
+
+              <!-- Highlights -->
+              <div
+                class="modal-section"
+                v-if="selectedVolunteer.highlights && selectedVolunteer.highlights.length"
+              >
+                <h4 class="section-heading">Key Contributions & Highlights</h4>
+                <ul class="modal-highlights">
+                  <li v-for="hl in selectedVolunteer.highlights" :key="hl">
+                    {{ hl }}
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Tags -->
+              <div
+                class="modal-section"
+                v-if="selectedVolunteer.tags && selectedVolunteer.tags.length"
+              >
+                <h4 class="section-heading">Categories</h4>
+                <div class="modal-tags">
+                  <span v-for="tag in selectedVolunteer.tags" :key="tag" class="tag-badge">
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </Teleport>
   </div>
 </template>
 
 <script setup>
-import { HeartHandshake } from 'lucide-vue-next'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { HeartHandshake, Eye, X } from 'lucide-vue-next'
 import { useHead } from '@unhead/vue'
 import { seoConfig } from '../config/seo'
+
+const selectedVolunteer = ref(null)
+
+const openModal = (item) => {
+  selectedVolunteer.value = item
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = 'hidden'
+  }
+}
+
+const closeModal = () => {
+  selectedVolunteer.value = null
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = ''
+  }
+}
+
+const handleKeydown = (e) => {
+  if (e.key === 'Escape' && selectedVolunteer.value) {
+    closeModal()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = ''
+  }
+})
 
 useHead({
   title: 'Volunteers',
@@ -211,6 +344,7 @@ const volunteers = [
 
 .volunteers-grid {
   margin-top: var(--space-xl);
+  align-items: start;
 }
 
 .volunteer-card {
@@ -300,6 +434,7 @@ const volunteers = [
   height: 200px;
   overflow: hidden;
   background: var(--bg-secondary);
+  cursor: pointer;
 }
 
 .volunteer-image img {
@@ -311,6 +446,41 @@ const volunteers = [
 
 .volunteer-card:hover .volunteer-image img {
   transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 12, 14, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+  pointer-events: none;
+}
+
+.volunteer-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.overlay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(18, 20, 24, 0.85);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.overlay-badge svg {
+  color: var(--color-accent);
 }
 
 .volunteer-card-content {
@@ -359,30 +529,205 @@ const volunteers = [
   color: var(--color-accent);
 }
 
-.volunteer-desc {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
+.volunteer-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
 }
 
-.volunteer-highlights {
-  margin-top: var(--space-1);
-  padding-left: 0;
-  list-style-type: none;
+.volunteer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.detail-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.detail-icon-btn:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--color-accent-muted);
+}
+
+/* ============================================
+   Modal Styles
+   ============================================ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 9, 11, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: var(--z-modal, 200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  max-height: 88vh;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
 }
 
-.volunteer-highlights li {
+.modal-media {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  flex-shrink: 0;
+  background: var(--color-surface-raised);
+  overflow: hidden;
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(18, 20, 24, 0.1), rgba(18, 20, 24, 0.9));
+  pointer-events: none;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: rgba(18, 20, 24, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 5;
+}
+
+.modal-close-btn:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.modal-content {
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.modal-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.modal-org {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.modal-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.modal-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.35;
+  margin-top: -4px;
+}
+
+.modal-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.section-heading {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--color-accent-text);
+}
+
+.modal-desc {
+  font-size: 0.925rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.modal-highlights {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.modal-highlights li {
   position: relative;
   padding-left: var(--space-3);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-.volunteer-highlights li::before {
+.modal-highlights li::before {
   content: '▹';
   position: absolute;
   left: 0;
@@ -390,12 +735,32 @@ const volunteers = [
   font-weight: bold;
 }
 
-.volunteer-tags {
+.modal-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
-  margin-top: auto;
-  padding-top: var(--space-2);
+}
+
+/* Modal Transition */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.modal-fade-enter-active .modal-card,
+.modal-fade-leave-active .modal-card {
+  transition: transform var(--duration-base) var(--ease-standard), opacity var(--duration-base) var(--ease-standard);
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.modal-fade-enter-from .modal-card,
+.modal-fade-leave-to .modal-card {
+  opacity: 0;
+  transform: scale(0.94) translateY(14px);
 }
 
 .tag-badge {
@@ -487,6 +852,28 @@ const volunteers = [
   .tag-badge {
     font-size: 0.675rem;
     padding: 2px 7px;
+  }
+}
+@media (max-width: 640px) {
+  .modal-backdrop {
+    padding: var(--space-2);
+  }
+
+  .modal-card {
+    max-height: 92vh;
+  }
+
+  .modal-media {
+    height: 180px;
+  }
+
+  .modal-content {
+    padding: var(--space-3);
+    gap: var(--space-3);
+  }
+
+  .modal-title {
+    font-size: 1.15rem;
   }
 }
 </style>
