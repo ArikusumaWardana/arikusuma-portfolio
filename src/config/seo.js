@@ -1,5 +1,5 @@
 export const seoConfig = {
-  siteUrl: 'https://arikusuma-wardana.vercel.app',
+  siteUrl: 'https://www.arikusuma-wardana.my.id',
   googleAnalyticsId: 'G-BR7C8LFF8P',
   googleSearchConsoleId: 'gSY2R7SVQyxxGkH3zOZQRQADV30llFFCzeFoeY52WKQ',
   

@@ -1,8 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8" />
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
@@ -14,19 +26,19 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://arikusuma-wardana.vercel.app/" />
+  <meta property="og:url" content="https://www.arikusuma-wardana.my.id/" />
   <meta property="og:title" content="Arikusuma Wardana — Web Developer & Game Developer Portfolio" />
   <meta property="og:description"
     content="Kadek Agus Arikusuma Wardana (Arikusuma Wardana / Arikusuma) is a Web Developer & Game Developer. Explore my creative projects built with Vue.js, Vite, and C#." />
-  <meta property="og:image" content="https://arikusuma-wardana.vercel.app/og-image.jpg" />
+  <meta property="og:image" content="https://www.arikusuma-wardana.my.id/og-image.jpg" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://arikusuma-wardana.vercel.app/" />
+  <meta property="twitter:url" content="https://www.arikusuma-wardana.my.id/" />
   <meta property="twitter:title" content="Arikusuma Wardana — Web Developer & Game Developer Portfolio" />
   <meta property="twitter:description"
     content="Kadek Agus Arikusuma Wardana (Arikusuma Wardana / Arikusuma) is a Web Developer & Game Developer. Explore my creative projects built with Vue.js, Vite, and C#." />
-  <meta property="twitter:image" content="https://arikusuma-wardana.vercel.app/og-image.jpg" />
+  <meta property="twitter:image" content="https://www.arikusuma-wardana.my.id/og-image.jpg" />
 
   <meta name="google-site-verification" content="gSY2R7SVQyxxGkH3zOZQRQADV30llFFCzeFoeY52WKQ" />
 </head>

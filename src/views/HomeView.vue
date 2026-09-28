@@ -31,6 +31,15 @@
               <router-link to="/about" class="btn btn-ghost">
                 About Me <User :size="18" />
               </router-link>
+              <a
+                href="/cv/CV_Kadek_Agus_Arikusuma_Wardana.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-ghost"
+                title="Preview & Download CV"
+              >
+                Download CV <FileDown :size="18" />
+              </a>
             </div>
 
             <div class="social-links">
@@ -110,6 +119,7 @@ import {
   ArrowRight,
   Briefcase,
   Code,
+  FileDown,
   Gamepad2,
   Github,
   GraduationCap,

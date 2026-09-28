@@ -71,7 +71,7 @@ import { BriefcaseBusiness, FolderKanban, HeartHandshake, Home, Moon, Sun, User,
 import { onMounted, ref } from 'vue'
 
 const isMenuOpen = ref(false)
-const isDark = ref(false)
+const isDark = ref(true)
 
 const navLinks = [
   { name: 'Home', path: '/', icon: Home },
@@ -99,16 +99,13 @@ function toggleTheme() {
 
 onMounted(() => {
   const savedTheme = localStorage.getItem('theme')
-  if (savedTheme === 'dark') {
-    isDark.value = true
-    document.documentElement.setAttribute('data-theme', 'dark')
-  } else if (savedTheme === 'light') {
+  if (savedTheme === 'light') {
     isDark.value = false
     document.documentElement.setAttribute('data-theme', 'light')
   } else {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    isDark.value = prefersDark
-    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
+    // Default to dark mode for first-time visitors (savedTheme === null or savedTheme === 'dark')
+    isDark.value = true
+    document.documentElement.setAttribute('data-theme', 'dark')
   }
 })
 </script>
