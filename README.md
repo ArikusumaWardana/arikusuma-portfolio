@@ -1,5 +1,17 @@
-# Vue 3 + Vite
+<p align="center">
+  <img src="public/logo.svg" alt="Arikusuma Wardana Logo" width="80" height="80" />
+</p>
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Arikusuma Wardana - Portfolio Website
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+A modern personal portfolio website by **Kadek Agus Arikusuma Wardana** showcasing his profile, work experience, projects (Web & Game Development), technical skills, tools, and volunteer activities.
+
+## Tech Stack
+
+- **Framework**: [Vue 3](https://vuejs.org/) (Composition API, `<script setup>`)
+- **Build Tool & SSG**: [Vite](https://vitejs.dev/) & [vite-ssg](https://github.com/antfu/vite-ssg) (Static Site Generation untuk performa tinggi & SEO pre-rendering)
+- **Routing**: [Vue Router 4](https://router.vuejs.org/)
+- **SEO & Meta Management**: [@unhead/vue](https://unhead.unjs.io/) (Meta tags & Schema.org JSON-LD structured data)
+- **Icons**: [lucide-vue-next](https://lucide.dev/)
+- **Styling**: Vanilla CSS3 (Design Tokens, Dark Theme, Animations)
+- **Deployment**: [Vercel](https://vercel.com/)

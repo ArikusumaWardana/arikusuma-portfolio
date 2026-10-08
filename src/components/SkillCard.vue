@@ -4,22 +4,14 @@
       <component :is="icon" :size="28" />
     </div>
     <h3 class="skill-name">{{ name }}</h3>
-    <span class="skill-level" :class="levelClass">{{ level }}</span>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
+defineProps({
   name: {
     type: String,
     required: true
-  },
-  level: {
-    type: String,
-    default: 'Beginner', // Beginner, Intermediate, Advanced
-    validator: (value) => ['Beginner', 'Intermediate', 'Advanced'].includes(value)
   },
   icon: {
     type: [Object, Function],
@@ -30,10 +22,6 @@ const props = defineProps({
     default: 'primary'
   }
 })
-
-const levelClass = computed(() => {
-  return `level-${props.level.toLowerCase()}`
-})
 </script>
 
 <style scoped>
@@ -41,6 +29,7 @@ const levelClass = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   gap: var(--space-3);
   padding: var(--space-4);
@@ -165,33 +154,4 @@ const levelClass = computed(() => {
   color: var(--color-text-primary);
 }
 
-.skill-level {
-  font-size: 0.725rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface-raised);
-  color: var(--color-text-secondary);
-}
-
-.level-beginner {
-  border-color: var(--color-border);
-  color: var(--color-text-secondary);
-}
-
-.level-intermediate {
-  border-color: var(--color-accent);
-  background: var(--color-accent-muted);
-  color: var(--color-accent-text);
-}
-
-.level-advanced {
-  border-color: var(--color-accent);
-  background: var(--color-accent);
-  color: #0A0A0C;
-  font-weight: 700;
-}
 </style>
