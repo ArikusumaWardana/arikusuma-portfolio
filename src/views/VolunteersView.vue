@@ -53,41 +53,43 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: `Explore the community volunteering, event organizing, and social initiatives that ${seoConfig.fullName} (${seoConfig.displayName}) participated in.`
+      content: `Explore community volunteering, event organizing, and tech initiatives that Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma) participated in — including GDG Bali, DevFest, and Build with AI events.`
     },
     {
       name: 'keywords',
-      content: `volunteer work, community services, GDG Bali, tech events, Build with AI, ${seoConfig.displayName}`
+      content: `Arikusuma Wardana volunteer, Arikusuma community, GDG Bali, tech events, Build with AI, DevFest, ${seoConfig.fullName}`
     },
-    // Open Graph
     {
       property: 'og:title',
-      content: `Volunteers | ${seoConfig.displayName}`
+      content: `Volunteer Activities of Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       property: 'og:description',
-      content: `Explore the community volunteering, event organizing, and social initiatives that ${seoConfig.fullName} (${seoConfig.displayName}) participated in.`
+      content: `Explore community volunteering and tech initiatives of Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
     },
-    // Twitter Cards
+    {
+      property: 'og:url',
+      content: `${seoConfig.siteUrl}/volunteers`
+    },
     {
       name: 'twitter:title',
-      content: `Volunteers | ${seoConfig.displayName}`
+      content: `Volunteer Activities of Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       name: 'twitter:description',
-      content: `Explore the community volunteering, event organizing, and social initiatives that ${seoConfig.fullName} (${seoConfig.displayName}) participated in.`
+      content: `Explore community volunteering and tech initiatives of Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
     }
   ],
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebPage",
         "@id": `${seoConfig.siteUrl}/volunteers/#webpage`,
         "url": `${seoConfig.siteUrl}/volunteers`,
         "name": `Volunteer Work of ${seoConfig.displayName}`,
-        "description": `Community work and volunteer activities of ${seoConfig.fullName}.`,
+        "description": `Community volunteering and tech event activities of ${seoConfig.fullName} (Arikusuma Wardana / Arikusuma).`,
         "isPartOf": {
           "@id": `${seoConfig.siteUrl}/#website`
         },

@@ -8,7 +8,7 @@ export default defineConfig({
   ssgOptions: {
     onFinished() {
       generateSitemap({
-        hostname: 'https://arikusuma-wardana.vercel.app/',
+        hostname: 'https://arikusuma-wardana.my.id',
         readable: true,
       })
     },

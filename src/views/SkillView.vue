@@ -44,39 +44,43 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: `Discover tech stack, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Discover the tech stack, programming languages, and frameworks of Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma). Skills include HTML, CSS, JavaScript, TypeScript, PHP, C#, Vue.js, Next.js, Laravel, and Unity.`
     },
     {
       name: 'keywords',
-      content: `tech stack, developer skills, technologies, HTML, CSS, JavaScript, TypeScript, PHP, C#, Vue.js, Laravel, Unity, ${seoConfig.displayName}`
+      content: `Arikusuma Wardana tech stack, Arikusuma skills, developer skills, HTML, CSS, JavaScript, TypeScript, PHP, C#, Vue.js, Next.js, Laravel, Unity, ${seoConfig.fullName}`
     },
     {
       property: 'og:title',
-      content: `Tech Stack | ${seoConfig.displayName}`
+      content: `Tech Stack of Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       property: 'og:description',
-      content: `Discover tech stack, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Discover the tech stack, programming languages, and frameworks of Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
+    },
+    {
+      property: 'og:url',
+      content: `${seoConfig.siteUrl}/tech-stack`
     },
     {
       name: 'twitter:title',
-      content: `Tech Stack | ${seoConfig.displayName}`
+      content: `Tech Stack of Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       name: 'twitter:description',
-      content: `Discover tech stack, programming languages, and framework expertise of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Discover the tech stack, programming languages, and frameworks of Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
     }
   ],
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebPage",
         "@id": `${seoConfig.siteUrl}/tech-stack/#webpage`,
         "url": `${seoConfig.siteUrl}/tech-stack`,
         "name": `Tech Stack of ${seoConfig.displayName}`,
-        "description": `Technical skills and technologies mastered by ${seoConfig.fullName}.`,
+        "description": `Tech stack and technical skills of ${seoConfig.fullName} (Arikusuma Wardana / Arikusuma).`,
         "isPartOf": {
           "@id": `${seoConfig.siteUrl}/#website`
         },

@@ -71,39 +71,43 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: `Explore the career journey, work history, and professional milestones of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore the career journey, work history, and professional milestones of Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma) — including game development at Palm Game Studio and web development experience.`
     },
     {
       name: 'keywords',
-      content: `work experience, career history, jobs, Unity game developer, PHP web developer, Palm Game Studio, ${seoConfig.displayName}`
+      content: `Arikusuma Wardana experience, Arikusuma work history, career, Palm Game Studio, Unity game developer, web developer, ${seoConfig.fullName}`
     },
     {
       property: 'og:title',
-      content: `Experiences | ${seoConfig.displayName}`
+      content: `Experiences of Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       property: 'og:description',
-      content: `Explore the career journey, work history, and professional milestones of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore the career journey and work history of Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
+    },
+    {
+      property: 'og:url',
+      content: `${seoConfig.siteUrl}/experiences`
     },
     {
       name: 'twitter:title',
-      content: `Experiences | ${seoConfig.displayName}`
+      content: `Experiences of Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       name: 'twitter:description',
-      content: `Explore the career journey, work history, and professional milestones of ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore the career journey and work history of Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
     }
   ],
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebPage",
         "@id": `${seoConfig.siteUrl}/experiences/#webpage`,
         "url": `${seoConfig.siteUrl}/experiences`,
         "name": `Experiences of ${seoConfig.displayName}`,
-        "description": `Professional history and work experiences of ${seoConfig.fullName}.`,
+        "description": `Professional history and work experiences of ${seoConfig.fullName} (Arikusuma Wardana / Arikusuma).`,
         "isPartOf": {
           "@id": `${seoConfig.siteUrl}/#website`
         },

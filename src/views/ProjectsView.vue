@@ -82,41 +82,43 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: `Explore creative web applications and Unity game projects developed by ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore creative web applications and Unity game projects by Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma). Built with Vue.js, Next.js, Laravel, and Unity.`
     },
     {
       name: 'keywords',
-      content: `projects, portfolio, web apps, games, Unity, Laravel, Vue.js, C#, ${seoConfig.displayName}, ${seoConfig.fullName}`
+      content: `Arikusuma Wardana projects, Arikusuma projects, portfolio, web apps, games, Unity, Laravel, Vue.js, Next.js, C#, ${seoConfig.fullName}`
     },
-    // Open Graph
     {
       property: 'og:title',
-      content: `Projects | ${seoConfig.displayName}`
+      content: `Projects by Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       property: 'og:description',
-      content: `Explore creative web applications and Unity game projects developed by ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore creative web applications and Unity game projects by Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
     },
-    // Twitter Cards
+    {
+      property: 'og:url',
+      content: `${seoConfig.siteUrl}/projects`
+    },
     {
       name: 'twitter:title',
-      content: `Projects | ${seoConfig.displayName}`
+      content: `Projects by Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       name: 'twitter:description',
-      content: `Explore creative web applications and Unity game projects developed by ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore creative web applications and Unity game projects by Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
     }
   ],
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "@id": `${seoConfig.siteUrl}/projects/#webpage`,
         "url": `${seoConfig.siteUrl}/projects`,
         "name": `Projects by ${seoConfig.displayName}`,
-        "description": `Explore web applications and game projects developed by ${seoConfig.fullName}.`,
+        "description": `Explore web applications and game projects by ${seoConfig.fullName} (Arikusuma Wardana / Arikusuma).`,
         "isPartOf": {
           "@id": `${seoConfig.siteUrl}/#website`
         },

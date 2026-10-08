@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://arikusuma-wardana.vercel.app/sitemap.xml
+
+Sitemap: https://arikusuma-wardana.my.id/sitemap.xml

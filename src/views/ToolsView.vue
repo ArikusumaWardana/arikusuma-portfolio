@@ -44,39 +44,43 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: `Explore the developer tools, software environments, and platforms used daily by ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore the developer tools, software environments, and platforms used daily by Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma) — including VS Code, Unity, Supabase, Docker, and more.`
     },
     {
       name: 'keywords',
-      content: `developer tools, VS Code, Laragon, Unity, GitHub, Supabase, PHPStorm, toolset, developer environment, ${seoConfig.displayName}`
+      content: `Arikusuma Wardana tools, Arikusuma developer tools, VS Code, Unity, GitHub, Supabase, Docker, PhpStorm, DataGrip, toolset, ${seoConfig.fullName}`
     },
     {
       property: 'og:title',
-      content: `Tools | ${seoConfig.displayName}`
+      content: `Tools of Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       property: 'og:description',
-      content: `Explore the developer tools, software environments, and platforms used daily by ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore the developer tools, software environments, and platforms used daily by Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
+    },
+    {
+      property: 'og:url',
+      content: `${seoConfig.siteUrl}/tools`
     },
     {
       name: 'twitter:title',
-      content: `Tools | ${seoConfig.displayName}`
+      content: `Tools of Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       name: 'twitter:description',
-      content: `Explore the developer tools, software environments, and platforms used daily by ${seoConfig.fullName} (${seoConfig.displayName}).`
+      content: `Explore the developer tools, software environments, and platforms used daily by Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma).`
     }
   ],
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebPage",
         "@id": `${seoConfig.siteUrl}/tools/#webpage`,
         "url": `${seoConfig.siteUrl}/tools`,
         "name": `Tools of ${seoConfig.displayName}`,
-        "description": `Developer tools and setup used by ${seoConfig.fullName}.`,
+        "description": `Developer tools and setup used by ${seoConfig.fullName} (Arikusuma Wardana / Arikusuma).`,
         "isPartOf": {
           "@id": `${seoConfig.siteUrl}/#website`
         },

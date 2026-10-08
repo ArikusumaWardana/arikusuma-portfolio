@@ -16,10 +16,19 @@
 
 <script setup>
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 import LiveGridBackground from './components/LiveGridBackground.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import { seoConfig } from './config/seo'
+
+const route = useRoute()
+
+const canonicalUrl = computed(() => {
+  const path = route.path === '/' ? '/' : route.path.replace(/\/$/, '')
+  return `${seoConfig.siteUrl}${path}`
+})
 
 const onBeforeEnter = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -27,6 +36,12 @@ const onBeforeEnter = () => {
 
 useHead({
   titleTemplate: (title) => title ? `${title} | ${seoConfig.displayName}` : seoConfig.defaultTitle,
+  link: [
+    {
+      rel: 'canonical',
+      href: canonicalUrl
+    }
+  ],
   meta: [
     {
       name: 'description',
@@ -43,6 +58,34 @@ useHead({
     {
       name: 'google-site-verification',
       content: seoConfig.googleSearchConsoleId
+    },
+    {
+      property: 'og:site_name',
+      content: `${seoConfig.displayName} Portfolio`
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: canonicalUrl
+    },
+    {
+      property: 'og:image',
+      content: `${seoConfig.siteUrl}${seoConfig.defaultImage}`
+    },
+    {
+      property: 'og:locale',
+      content: 'en_US'
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image'
+    },
+    {
+      name: 'twitter:image',
+      content: `${seoConfig.siteUrl}${seoConfig.defaultImage}`
     }
   ]
 })

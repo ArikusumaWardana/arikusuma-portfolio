@@ -159,7 +159,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@graph": [
           {
@@ -167,8 +167,8 @@ useHead({
             "@id": `${seoConfig.siteUrl}/#person`,
             "name": seoConfig.fullName,
             "additionalName": seoConfig.nickName,
-            "alternateName": seoConfig.displayName,
-            "jobTitle": "Web Developer & Game Developer",
+            "alternateName": [seoConfig.displayName, seoConfig.nickName, "Kadek Arikusuma"],
+            "jobTitle": ["Web Developer", "Game Developer", "Game Programmer"],
             "url": seoConfig.siteUrl,
             "image": `${seoConfig.siteUrl}/profile.webp`,
             "sameAs": [
@@ -176,14 +176,38 @@ useHead({
               seoConfig.socialLinks.linkedin,
               seoConfig.socialLinks.instagram
             ],
-            "knowsAbout": ["Web Development", "Game Development", "Vue.js", "Vite", "C#", "Unity"]
+            "knowsAbout": ["Web Development", "Game Development", "Vue.js", "Next.js", "Laravel", "Vite", "C#", "Unity", "JavaScript", "TypeScript"],
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "Primakara University"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Denpasar",
+              "addressRegion": "Bali",
+              "addressCountry": "ID"
+            }
           },
           {
             "@type": "WebSite",
             "@id": `${seoConfig.siteUrl}/#website`,
             "url": seoConfig.siteUrl,
-            "name": seoConfig.displayName,
+            "name": `${seoConfig.displayName} Portfolio`,
+            "alternateName": ["Arikusuma Portfolio", "Arikusuma Wardana Portfolio"],
             "publisher": {
+              "@id": `${seoConfig.siteUrl}/#person`
+            },
+            "description": seoConfig.defaultDescription
+          },
+          {
+            "@type": "WebPage",
+            "@id": `${seoConfig.siteUrl}/#webpage`,
+            "url": seoConfig.siteUrl,
+            "name": seoConfig.defaultTitle,
+            "isPartOf": {
+              "@id": `${seoConfig.siteUrl}/#website`
+            },
+            "about": {
               "@id": `${seoConfig.siteUrl}/#person`
             },
             "description": seoConfig.defaultDescription

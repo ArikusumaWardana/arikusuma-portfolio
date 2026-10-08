@@ -127,39 +127,43 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: `Learn more about ${seoConfig.fullName} (${seoConfig.displayName} / ${seoConfig.nickName}). Discover my background, university study, and professional interests.`
+      content: `About Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma) — Web Developer & Game Developer from Bali, Indonesia. Discover background, education at Primakara University, and professional interests.`
     },
     {
       name: 'keywords',
-      content: `About ${seoConfig.fullName}, About ${seoConfig.displayName}, ${seoConfig.nickName}, bio, developer profile, Primakara University`
+      content: `About Arikusuma Wardana, About Arikusuma, Kadek Agus Arikusuma Wardana, bio, developer profile, Primakara University, Bali Developer`
     },
     {
       property: 'og:title',
-      content: `About | ${seoConfig.displayName}`
+      content: `About Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       property: 'og:description',
-      content: `Learn more about ${seoConfig.fullName} (${seoConfig.displayName} / ${seoConfig.nickName}), Web Developer and Game Developer.`
+      content: `About Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma) — Web Developer & Game Developer from Bali, Indonesia.`
+    },
+    {
+      property: 'og:url',
+      content: `${seoConfig.siteUrl}/about`
     },
     {
       name: 'twitter:title',
-      content: `About | ${seoConfig.displayName}`
+      content: `About Arikusuma Wardana | ${seoConfig.displayName}`
     },
     {
       name: 'twitter:description',
-      content: `Learn more about ${seoConfig.fullName} (${seoConfig.displayName} / ${seoConfig.nickName}), Web Developer and Game Developer.`
+      content: `About Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma) — Web Developer & Game Developer from Bali, Indonesia.`
     }
   ],
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "AboutPage",
         "@id": `${seoConfig.siteUrl}/about/#webpage`,
         "url": `${seoConfig.siteUrl}/about`,
         "name": `About ${seoConfig.displayName}`,
-        "description": `Learn more about ${seoConfig.fullName} (${seoConfig.displayName} / ${seoConfig.nickName}), Web Developer and Game Developer.`,
+        "description": `About Arikusuma Wardana (Kadek Agus Arikusuma Wardana / Arikusuma) — Web Developer & Game Developer from Bali, Indonesia.`,
         "isPartOf": {
           "@id": `${seoConfig.siteUrl}/#website`
         },
