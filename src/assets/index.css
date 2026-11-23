@@ -1,378 +1,203 @@
-/* ============================================
-   Portfolio Website - Design System (Anti-Slop)
-   ============================================ */
+@import "tailwindcss";
 
-/* Import Design Tokens & Google Fonts */
-@import './tokens.css';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+@theme {
+  --color-dark-primary: #1C2029;
+  --color-dark-deep: #14171F;
+  --color-surface-white: #FFFFFF;
+  --color-surface-gray: #E3E9EE;
+  --color-crimson: #D63A49;
+  --color-crimson-hover: #E04A58;
+  --color-ink-light: #1F242D;
+  --color-ink-muted: #4B5565;
+  --color-dark-text: #F8FAFC;
+  --color-dark-muted: #94A3B8;
 
-/* ============================================
-   Global Reset & Base Styles
-   ============================================ */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  --font-display: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-script: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
 
-body {
-  font-family: var(--font-sans);
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
-  line-height: 1.6;
-  min-height: 100vh;
-  transition: background-color var(--transition-normal), color var(--transition-normal);
-  overflow-x: hidden;
-}
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
 
-#app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
 
-/* ============================================
-   Typography
-   ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-text-primary);
-}
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
 
-h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-}
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
 
-h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-}
+  body {
+    font-family: var(--font-sans);
+    background-color: #14171F;
+    color: #1F242D;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-}
-
-p {
-  color: var(--color-text-secondary);
-  line-height: 1.8;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-/* ============================================
-   Solid Surface Utilities
-   ============================================ */
-.glass {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-}
-
-.glass-card {
-  background: var(--color-surface-raised);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-}
-
-/* ============================================
-   Accent Text (Replaces Gradient Text)
-   ============================================ */
-.gradient-text,
-.text-accent {
-  color: var(--color-accent-text);
-  background: none;
-  -webkit-text-fill-color: initial;
-  background-clip: border-box;
-}
-
-/* ============================================
-   Buttons
-   ============================================ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-lg);
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.btn-primary {
-  background: var(--color-accent);
-  color: #0A0A0C;
-  border-color: var(--color-accent);
-}
-
-.btn-primary:hover {
-  background: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
-  transform: translateY(-2px);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border);
-}
-
-.btn-ghost:hover {
-  background: var(--color-surface-raised);
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-/* ============================================
-   Icon Button
-   ============================================ */
-.icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.icon-btn:hover {
-  background: var(--color-surface-raised);
-  color: var(--color-accent);
-  border-color: var(--color-border);
-  transform: translateY(-2px);
-}
-
-/* ============================================
-   Cards
-   ============================================ */
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  transition: all var(--transition-fast);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-accent);
-}
-
-/* ============================================
-   Container
-   ============================================ */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-
-/* ============================================
-   Page Layout
-   ============================================ */
-.page {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 80px);
-  padding: var(--space-3xl) var(--space-lg);
-  padding-top: calc(80px + var(--space-2xl));
-}
-
-.page-title {
-  text-align: center;
-  margin-bottom: var(--space-xl);
-}
-
-.page-title h1 {
-  margin-bottom: var(--space-sm);
-}
-
-.page-title p {
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* ============================================
-   Grid System
-   ============================================ */
-.grid {
-  display: grid;
-  gap: var(--space-lg);
-}
-
-.grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.grid-4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-@media (max-width: 1024px) {
-  .grid-4 {
-    grid-template-columns: repeat(3, 1fr);
+  ::selection {
+    background-color: rgba(214, 58, 73, 0.2);
+    color: #D63A49;
   }
 }
 
-@media (max-width: 768px) {
-  .grid-2,
-  .grid-3,
-  .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .grid-2,
-  .grid-3,
-  .grid-4 {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ============================================
-   Animations
-   ============================================ */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s var(--ease-standard) forwards;
-}
-
-/* Animation delays */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-
-/* ============================================
-   Page Transitions
-   ============================================ */
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.2s var(--ease-standard);
-}
-
-.fade-enter-from {
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(-12px);
-}
-
-/* ============================================
-   Scrollbar Styling
-   ============================================ */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: #14171F;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: var(--radius-sm);
+  background: #2C3342;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  background: #D63A49;
 }
 
-/* ============================================
-   Selection
-   ============================================ */
-::selection {
-  background: var(--color-accent-muted);
-  color: var(--color-accent);
+/* Slow ambient rotation for project hover orbital ring */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* ============================================
-   Utility Classes
-   ============================================ */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
 }
 
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
+/* Continuous right-to-left marquee for Tech Stack strip */
+@keyframes tech-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
 
-.gap-sm { gap: var(--space-1); }
-.gap-md { gap: var(--space-3); }
-.gap-lg { gap: var(--space-4); }
+.tech-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: tech-marquee 38s linear infinite;
+  will-change: transform;
+}
 
-.mt-sm { margin-top: var(--space-2); }
-.mt-md { margin-top: var(--space-3); }
-.mt-lg { margin-top: var(--space-4); }
-.mt-xl { margin-top: var(--space-5); }
+.tech-marquee-wrapper:hover .tech-marquee-track {
+  animation-play-state: paused;
+}
 
-.mb-sm { margin-bottom: var(--space-2); }
-.mb-md { margin-bottom: var(--space-3); }
-.mb-lg { margin-bottom: var(--space-4); }
-.mb-xl { margin-bottom: var(--space-5); }
+/* Transition animations for project category filtering */
+.project-switch-enter-active,
+.project-switch-leave-active {
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-switch-enter-from,
+.project-switch-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* Modal Fade & Scale Transitions */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-fade-enter-active .modal-panel,
+.modal-fade-leave-active .modal-panel {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.modal-fade-enter-from .modal-panel,
+.modal-fade-leave-to .modal-panel {
+  opacity: 0;
+  transform: scale(0.95) translateY(16px);
+}
+
+/* Directional slide + fade for testimonial carousel */
+.quote-slide-next-enter-active,
+.quote-slide-next-leave-active,
+.quote-slide-prev-enter-active,
+.quote-slide-prev-leave-active {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quote-slide-next-enter-from {
+  opacity: 0;
+  transform: translateX(28px);
+}
+
+.quote-slide-next-leave-to {
+  opacity: 0;
+  transform: translateX(-28px);
+}
+
+.quote-slide-prev-enter-from {
+  opacity: 0;
+  transform: translateX(-28px);
+}
+
+.quote-slide-prev-leave-to {
+  opacity: 0;
+  transform: translateX(28px);
+}
+
+/* Accessibility: Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-spin-slow,
+  .tech-marquee-track {
+    animation: none !important;
+  }
+
+  .tech-marquee-track {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tech-marquee-duplicate {
+    display: none !important;
+  }
+
+  .project-switch-enter-active,
+  .project-switch-leave-active,
+  .modal-fade-enter-active,
+  .modal-fade-leave-active,
+  .quote-slide-next-enter-active,
+  .quote-slide-next-leave-active,
+  .quote-slide-prev-enter-active,
+  .quote-slide-prev-leave-active {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,14 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
-  <style>
-    .accent { stroke: #00B88A; }
-    @media (prefers-color-scheme: dark) {
-      .accent { stroke: #00D9A3; }
-    }
-  </style>
-  
-  <!-- Outer Hexagon -->
-  <path class="accent" d="M40 6 L69 22 V58 L40 74 L11 58 V22 Z" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-  
-  <!-- Letter A -->
-  <path class="accent" d="M40 24 L24 56 M40 24 L56 56 M30 46 H50" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path stroke="#D63A49" d="M40 6 L69 22 V58 L40 74 L11 58 V22 Z" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path stroke="#D63A49" d="M40 24 L24 56 M40 24 L56 56 M30 46 H50" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

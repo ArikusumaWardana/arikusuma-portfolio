@@ -1,41 +1,37 @@
 <template>
-  <div id="app-wrapper">
-    <LiveGridBackground />
-    <Navbar />
-    <h1 class="sr-only">{{ seoConfig.fullName }} - Web Developer & Game Developer</h1>
-    <main class="main-content">
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in" @before-enter="onBeforeEnter">
-          <component :is="Component" />
-        </transition>
-      </router-view>
-    </main>
-    <Footer />
+  <div id="app-wrapper" class="min-h-screen bg-[#14171F] text-[#1F242D]">
+    <DiamondCursor />
+    <router-view />
   </div>
 </template>
 
 <script setup>
+import { computed, onMounted, onUnmounted } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
-import { computed } from 'vue'
-import LiveGridBackground from './components/LiveGridBackground.vue'
-import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
 import { seoConfig } from './config/seo'
+import DiamondCursor from './components/ui/DiamondCursor.vue'
+import { initLenis } from './composables/useLenis'
 
 const route = useRoute()
+let cleanupLenis = null
+
+onMounted(async () => {
+  cleanupLenis = await initLenis()
+})
+
+onUnmounted(() => {
+  cleanupLenis?.()
+  cleanupLenis = null
+})
 
 const canonicalUrl = computed(() => {
   const path = route.path === '/' ? '/' : route.path.replace(/\/$/, '')
   return `${seoConfig.siteUrl}${path}`
 })
 
-const onBeforeEnter = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
-
 useHead({
-  titleTemplate: (title) => title ? `${title} | ${seoConfig.displayName}` : seoConfig.defaultTitle,
+  titleTemplate: (title) => (title ? `${title} | ${seoConfig.displayName}` : seoConfig.defaultTitle),
   link: [
     {
       rel: 'canonical',
@@ -90,34 +86,3 @@ useHead({
   ]
 })
 </script>
-
-<style>
-#app-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.main-content {
-  flex: 1;
-  position: relative;
-  z-index: var(--z-content, 1);
-}
-
-/* Page Transitions */
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.3s ease;
-}
-
-.fade-enter-from {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-</style>

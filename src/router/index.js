@@ -1,40 +1,46 @@
-import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 export const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomeView
+    component: HomeView,
+    meta: { section: 'hero' }
   },
   {
     path: '/about',
     name: 'About',
-    component: () => import('../views/AboutView.vue')
-  },
-  {
-    path: '/tech-stack',
-    name: 'Tech Stack',
-    component: () => import('../views/SkillView.vue')
-  },
-  {
-    path: '/tools',
-    name: 'Tools',
-    component: () => import('../views/ToolsView.vue')
-  },
-  {
-    path: '/projects',
-    name: 'Projects',
-    component: () => import('../views/ProjectsView.vue')
+    component: HomeView,
+    meta: { section: 'about' }
   },
   {
     path: '/experiences',
     name: 'Experiences',
-    component: () => import('../views/ExperiencesView.vue')
+    component: HomeView,
+    meta: { section: 'experience' }
   },
   {
     path: '/volunteers',
     name: 'Volunteers',
-    component: () => import('../views/VolunteersView.vue')
+    component: HomeView,
+    meta: { section: 'experience' }
+  },
+  {
+    path: '/tech-stack',
+    name: 'Tech Stack',
+    component: HomeView,
+    meta: { section: 'skills' }
+  },
+  {
+    path: '/tools',
+    name: 'Tools',
+    component: HomeView,
+    meta: { section: 'tech-stack' }
+  },
+  {
+    path: '/projects',
+    name: 'Projects',
+    component: HomeView,
+    meta: { section: 'projects' }
   }
 ]

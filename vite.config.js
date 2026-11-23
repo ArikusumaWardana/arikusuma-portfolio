@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import tailwindcss from '@tailwindcss/vite'
 import generateSitemap from 'vite-ssg-sitemap'
 
 function pdfHeadersPlugin() {
@@ -18,7 +19,7 @@ function pdfHeadersPlugin() {
 }
 
 export default defineConfig({
-  plugins: [vue(), pdfHeadersPlugin()],
+  plugins: [vue(), tailwindcss(), pdfHeadersPlugin()],
   ssgOptions: {
     onFinished() {
       generateSitemap({
