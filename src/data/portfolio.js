@@ -262,9 +262,26 @@ export const techStackList = [
   'Git'
 ]
 
-export const projectCategories = ['ALL', 'WEB', 'GAME', 'AI / ML']
+export const projectCategories = ['ALL', 'WEB', 'MOBILE','GAME', 'AI / ML']
 
 export const projects = [
+  {
+    name: 'BatasJamREG',
+    description: 'BatasJamREG adalah aplikasi web fullstack yang dikembangkan untuk kompetisi Web Application Competition Techcomfest 2027 (Politeknik Negeri Semarang) pada sub-tema Smart Lifestyle & Digital Wellbeing, selaras dengan SDG 3: Good Health and Well-being.',
+    techStack: ['Next.JS', 'Supabase', 'PostgreSQL', 'Tailwind CSS'],
+    image: '/projects/batasjamreg.webp',
+    githubUrl: 'https://github.com/ArikusumaWardana/BatasJamREG-web-app-competition',
+    websiteUrl: 'https://batasjam-reg.vercel.app/',
+    category: 'WEB'
+  },
+  {
+    name: 'Lacak Saji',
+    description: 'LacakSaji is an offline-first Flutter Android app for verifying food safety and tracking meal waste across Indonesia\'s Free Nutritious Meal (MBG) distribution from kitchens to schools.',
+    techStack: ['Flutter', 'Dart', 'Supabase', 'PostgreSQL'],
+    image: '/projects/lacak_saji.webp',
+    githubUrl: 'https://github.com/ArikusumaWardana/LacakSaji-mobile-programming-competition',
+    category: 'MOBILE'
+  },
   {
     name: 'Orbita',
     description: 'Orbita is an all-in-one personal productivity & financial intelligence workspace. It seamlessly unifies daily task management, event scheduling, multi-wallet cash flow tracking, and a context-aware AI assistant inside a modern interface.',
