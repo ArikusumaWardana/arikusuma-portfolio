@@ -24,6 +24,10 @@ export default defineConfig({
     onFinished() {
       generateSitemap({
         hostname: 'https://arikusuma-wardana.my.id',
+        exclude: ['/about', '/experiences', '/volunteers', '/tech-stack', '/tools', '/projects'],
+        generateRobotsTxt: false,
+        changefreq: 'weekly',
+        priority: 1.0,
         readable: true,
       })
     },

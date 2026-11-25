@@ -23,6 +23,8 @@
         <img
           :src="profile.avatar"
           :alt="`${profile.displayName} portrait`"
+          fetchpriority="high"
+          decoding="async"
           class="h-[68vh] w-auto object-contain object-right-bottom mix-blend-lighten opacity-35 transition-opacity duration-700 sm:h-[74vh] md:h-[80vh] md:opacity-55 lg:h-[85vh] lg:opacity-65 xl:h-[90vh]"
         />
 
@@ -44,7 +46,7 @@
       </p>
 
       <h1 class="hero-stagger mt-3 pl-[0.22em] font-display text-4xl font-bold uppercase tracking-[0.22em] text-[#F8FAFC] sm:text-6xl md:text-7xl">
-        {{ profile.heroTitle }}
+        {{ profile.heroTitle }}<span class="sr-only"> Wardana ({{ profile.fullName }}) - {{ profile.heroRole }}</span>
       </h1>
 
       <p class="hero-stagger mt-4 font-display text-[11px] font-medium uppercase tracking-[0.34em] text-[#94A3B8] sm:text-xs">

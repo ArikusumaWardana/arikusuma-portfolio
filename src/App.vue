@@ -25,10 +25,13 @@ onUnmounted(() => {
   cleanupLenis = null
 })
 
-const canonicalUrl = computed(() => {
-  const path = route.path === '/' ? '/' : route.path.replace(/\/$/, '')
-  return `${seoConfig.siteUrl}${path}`
-})
+const canonicalUrl = `${seoConfig.siteUrl}/`
+
+const robotsContent = computed(() =>
+  route.path === '/'
+    ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+    : 'noindex, follow'
+)
 
 useHead({
   titleTemplate: (title) => (title ? `${title} | ${seoConfig.displayName}` : seoConfig.defaultTitle),
@@ -39,6 +42,10 @@ useHead({
     }
   ],
   meta: [
+    {
+      name: 'robots',
+      content: robotsContent
+    },
     {
       name: 'description',
       content: seoConfig.defaultDescription
@@ -72,6 +79,10 @@ useHead({
       content: `${seoConfig.siteUrl}${seoConfig.defaultImage}`
     },
     {
+      property: 'og:image:alt',
+      content: `${seoConfig.fullName} - Web Developer & Game Programmer Portrait`
+    },
+    {
       property: 'og:locale',
       content: 'en_US'
     },
@@ -80,8 +91,16 @@ useHead({
       content: 'summary_large_image'
     },
     {
+      name: 'twitter:url',
+      content: canonicalUrl
+    },
+    {
       name: 'twitter:image',
       content: `${seoConfig.siteUrl}${seoConfig.defaultImage}`
+    },
+    {
+      name: 'twitter:image:alt',
+      content: `${seoConfig.fullName} - Web Developer & Game Programmer Portrait`
     }
   ]
 })

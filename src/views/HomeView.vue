@@ -16,10 +16,11 @@
 </template>
 
 <script setup>
-import { nextTick, onMounted, watch } from 'vue'
+import { computed, nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { seoConfig } from '../config/seo'
+import { profile, projects, techStackList } from '../data/portfolio'
 import { scrollToSection } from '../composables/useLenis'
 import NavigationOverlay from '../components/layout/NavigationOverlay.vue'
 import HeroSection from '../components/sections/HeroSection.vue'
@@ -58,17 +59,13 @@ watch(
   }
 )
 
+const pageTitle = computed(() => (route.path === '/' ? '' : String(route.name || '')))
+
+const canonicalUrl = `${seoConfig.siteUrl}/`
+
 useHead({
-  title: '',
+  title: pageTitle,
   meta: [
-    {
-      name: 'description',
-      content: seoConfig.defaultDescription
-    },
-    {
-      name: 'keywords',
-      content: seoConfig.defaultKeywords
-    },
     {
       property: 'og:title',
       content: seoConfig.defaultTitle
@@ -76,10 +73,6 @@ useHead({
     {
       property: 'og:description',
       content: seoConfig.defaultDescription
-    },
-    {
-      property: 'og:url',
-      content: seoConfig.siteUrl
     },
     {
       name: 'twitter:title',
@@ -103,8 +96,9 @@ useHead({
             additionalName: seoConfig.nickName,
             alternateName: [seoConfig.displayName, seoConfig.nickName, 'Kadek Arikusuma'],
             jobTitle: ['Web Developer', 'Game Developer', 'Game Programmer'],
-            url: seoConfig.siteUrl,
-            image: `${seoConfig.siteUrl}/profile.webp`,
+            url: canonicalUrl,
+            email: profile.email,
+            image: `${seoConfig.siteUrl}${seoConfig.defaultImage}`,
             sameAs: [
               seoConfig.socialLinks.github,
               seoConfig.socialLinks.linkedin,
@@ -113,14 +107,10 @@ useHead({
             knowsAbout: [
               'Web Development',
               'Game Development',
-              'Vue.js',
-              'Next.js',
-              'Laravel',
-              'Vite',
-              'C#',
+              'Game Programming',
               'Unity',
-              'JavaScript',
-              'TypeScript'
+              'Supabase',
+              ...techStackList
             ],
             alumniOf: {
               '@type': 'CollegeOrUniversity',
@@ -136,7 +126,7 @@ useHead({
           {
             '@type': 'WebSite',
             '@id': `${seoConfig.siteUrl}/#website`,
-            url: seoConfig.siteUrl,
+            url: canonicalUrl,
             name: `${seoConfig.displayName} Portfolio`,
             alternateName: ['Arikusuma Portfolio', 'Arikusuma Wardana Portfolio'],
             publisher: {
@@ -147,15 +137,39 @@ useHead({
           {
             '@type': 'WebPage',
             '@id': `${seoConfig.siteUrl}/#webpage`,
-            url: seoConfig.siteUrl,
+            url: canonicalUrl,
             name: seoConfig.defaultTitle,
             isPartOf: {
               '@id': `${seoConfig.siteUrl}/#website`
+            },
+            mainEntity: {
+              '@id': `${seoConfig.siteUrl}/#person`
             },
             about: {
               '@id': `${seoConfig.siteUrl}/#person`
             },
             description: seoConfig.defaultDescription
+          },
+          {
+            '@type': 'ItemList',
+            '@id': `${seoConfig.siteUrl}/#projects`,
+            name: `Projects by ${seoConfig.displayName}`,
+            numberOfItems: projects.length,
+            itemListElement: projects.map((project, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              item: {
+                '@type': 'CreativeWork',
+                name: project.name,
+                description: project.description,
+                url: project.websiteUrl || project.githubUrl || canonicalUrl,
+                image: `${seoConfig.siteUrl}${project.image}`,
+                keywords: project.techStack.join(', '),
+                creator: {
+                  '@id': `${seoConfig.siteUrl}/#person`
+                }
+              }
+            }))
           }
         ]
       })
