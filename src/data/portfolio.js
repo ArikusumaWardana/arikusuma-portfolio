@@ -262,9 +262,17 @@ export const techStackList = [
   'Git'
 ]
 
-export const projectCategories = ['ALL', 'WEB', 'MOBILE','GAME', 'AI / ML']
+export const projectCategories = ['ALL', 'WEB', 'MOBILE','GAME', 'DESKTOP APP','AI / ML']
 
 export const projects = [
+  {
+    name: 'Kestrel',
+    description: 'Kestrel is a fast, local-first download manager for Windows 10/11 built with Rust + Tauri v2, Svelte 5, and a Manifest V3 browser extension.',
+    techStack: ['Rust', 'Tauri v2', 'Svelte 5', 'Manifest V3'],
+    image: '/projects/kestrel.webp',
+    githubUrl: 'https://github.com/ArikusumaWardana/kestrel-idm-clone',
+    category: 'DESKTOP APP'
+  },
   {
     name: 'BatasJamREG',
     description: 'BatasJamREG adalah aplikasi web fullstack yang dikembangkan untuk kompetisi Web Application Competition Techcomfest 2027 (Politeknik Negeri Semarang) pada sub-tema Smart Lifestyle & Digital Wellbeing, selaras dengan SDG 3: Good Health and Well-being.',
